@@ -590,6 +590,46 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
 @media (max-width:980px){.eps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:620px){.eps{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.ep-im img{transition:none}}
+
+
+.tools-intro{margin-top:var(--sp-block)}
+.tool{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gut);row-gap:32px;align-items:start;border-top:1px solid var(--line);padding-top:22px;margin-top:var(--sp-section)}
+.tool:first-child{margin-top:var(--sp-block)}
+.tool-h{grid-column:1/5}
+.tool-h h2{font-family:var(--display);font-weight:400;font-size:var(--fs-m);line-height:1.05;margin:12px 0 14px}
+.tool-h p{margin:0;font-family:var(--text);font-weight:300;font-size:var(--fs-body);line-height:1.5;color:var(--dim);max-width:24em;text-wrap:pretty}
+.tool-in{grid-column:5/9;display:grid;gap:20px;align-content:start}
+.tool-in.two{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gut)}
+.tool-out{grid-column:9/-1}
+.tf{display:block;min-width:0}
+.tf-row{display:flex;align-items:center;gap:10px;margin-top:8px}
+.tool input,.tool select,.tool-btn{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:0;height:46px;padding:0 12px;min-width:0;width:100%;-webkit-appearance:none;appearance:none}
+.tool input{font-family:var(--mono);font-size:17px}
+.tool select{font-family:var(--ui);font-size:14px;color:var(--dim);background:var(--bg)}
+.tool-btn{font-family:var(--ui);font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;margin-top:10px}
+.tool-btn:hover{border-color:var(--fg)}
+.tool input:focus-visible,.tool select:focus-visible,.tool-btn:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.tool .unit{flex:none;font-family:var(--ui);font-size:13px;color:var(--dim);min-width:3.4em}
+.tool .hint{display:block;margin-top:8px;font-family:var(--ui);font-size:13px;line-height:1.45;color:var(--dim)}
+.te-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) 2.2em;gap:8px;align-items:center;margin-top:8px}
+.te-row.te-head{margin-top:12px}.te-row.te-one{grid-template-columns:minmax(0,1fr) auto}
+.te-row .unit{min-width:0}
+.tool-big{margin:8px 0 8px;font-family:var(--display);font-weight:400;font-size:clamp(36px,3.6vw,56px);line-height:1.02;letter-spacing:-.008em}
+.tool-mid{margin:8px 0 8px;font-family:var(--display);font-weight:400;font-size:var(--fs-s);line-height:1.1}
+.tool-big.ok{color:var(--accent)}
+.tool-line{margin:0;font-family:var(--ui);font-size:15px;line-height:1.5}
+.tool-line:empty{display:none}
+.tool-formula{margin:10px 0 0;font-family:var(--mono);font-size:12.5px;line-height:1.55;color:var(--dim);overflow-wrap:anywhere}
+.tool-sub{display:block;margin-top:26px}
+.tool-list{list-style:none;margin:12px 0 0;padding:0;font-family:var(--mono);font-size:14.5px}
+.tool-list li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:9px 0;border-top:1px solid var(--line)}
+.tool-list li>span:first-child:not(:only-child){color:var(--dim)}
+#tool-flicker .tool-list li>span:first-child{color:inherit}
+.tool-list li.pick,#tool-flicker .tool-list li.pick>span{color:var(--accent)}
+.tool-note{margin:22px 0 0;padding-top:12px;border-top:1px solid var(--line);font-family:var(--ui);font-size:13px;line-height:1.5;color:var(--dim)}
+@media (max-width:1100px){.tool-h{grid-column:1/-1}.tool-in{grid-column:1/7}.tool-out{grid-column:7/-1}}
+@media (max-width:700px){.tool-in,.tool-out{grid-column:1/-1}.tool-in.two{grid-template-columns:repeat(2,minmax(0,1fr))}.tool{row-gap:26px}}
+@media (max-width:420px){.tool-in.two{grid-template-columns:minmax(0,1fr)}}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -599,6 +639,7 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
   <nav class="links" aria-label="Main">
     <a href="#work" data-go="work">Work</a>
     <a href="#photographs" data-go="photographs" data-photos hidden>Photographs</a>
+    <a href="#tools" data-go="tools">Tools</a>
     <a href="#about" data-go="about">About</a>
     <a href="#contact" data-go="contact">Contact</a>
   </nav>
@@ -608,7 +649,7 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
   <div class="top"><span class="brand">Karan Chaudhary</span><button type="button" id="menu-close">Close</button></div>
   <nav aria-label="Main menu">
     <a href="#home" data-go="home">Home</a><a href="#work" data-go="work">Work</a><a href="#photographs" data-go="photographs" data-photos hidden>Photographs</a>
-    <a href="#about" data-go="about">About</a><a href="#contact" data-go="contact">Contact</a>
+    <a href="#tools" data-go="tools">Tools</a><a href="#about" data-go="about">About</a><a href="#contact" data-go="contact">Contact</a>
   </nav>
   <div class="bottom"><span class="slug">Gurugram, India</span><button class="motion" type="button" data-motion><i aria-hidden="true"></i><span>Pause light</span></button></div>
 </div>
@@ -694,6 +735,14 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
   <div class="lede rise"><h2 class="meta">Plates</h2><span class="slug">Studio&nbsp;· people&nbsp;· places</span></div>
   <div class="book" id="book"></div>
   <footer class="foot"><span class="meta">Karan&nbsp;Chaudhary&nbsp;· Photographs</span><button class="motion" type="button" data-motion><i aria-hidden="true"></i><span>Pause light</span></button><span class="fadeout">FADE OUT.</span></footer>
+</section>
+
+<section class="page tone-dark" id="p-tools" data-tone="dark" aria-label="Tools">
+  <h1 class="ptitle" tabindex="-1"><span class="ln"><span>Tools</span></span></h1>
+  <div class="lede rise"><h2 class="meta">Small calculators</h2><span class="slug">Free to use&nbsp;· they run on this page</span></div>
+  <p class="big-text rise tools-intro" style="--i:1">Sums that come up on a shoot and are awkward to do in your head.</p>
+  <div id="tools" class="rise" style="--i:2"></div>
+  <footer class="foot"><span class="meta">Karan&nbsp;Chaudhary&nbsp;· Tools</span><button class="motion" type="button" data-motion><i aria-hidden="true"></i><span>Pause light</span></button><span class="fadeout">FADE OUT.</span></footer>
 </section>
 
 <section class="page tone-light" id="p-about" data-tone="light" aria-label="About">
@@ -2286,6 +2335,165 @@ W.Media={mountAll,setPaused,preview,open,close,has,tc,isOpen:()=>theatreOpen};
 })();
 
 (()=>{
+const D=typeof document!=='undefined'?document:null,root=D&&D.getElementById?D.getElementById('tools'):null;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const DASH='–';
+
+function calcFlicker(inp){
+  let fps=inp.fps;const hz=inp.hz,angle=inp.angle;
+  if(!(Number.isFinite(fps)&&fps>=1&&fps<=1000&&Number.isFinite(hz)&&hz>=1&&hz<=1000))return{ok:false};
+  if(Math.abs(fps-23.976)<.001)fps=24000/1001;
+  const step=360*fps/(2*hz),nmax=Math.floor(2*hz/fps+1e-9),safe=[];
+  for(let n=1;n<=nmax;n++)safe.push({angle:step*n,denom:2*hz/n});
+  const out={ok:true,step,safe,noSafe:safe.length===0,test:null};
+  if(Number.isFinite(angle)&&angle>0&&angle<=360){
+    const steps=angle/step,isSafe=Math.round(steps)>=1&&Math.abs(steps-Math.round(steps))<1e-4;
+    let near=null;for(const s of safe){if(!near||Math.abs(s.angle-angle)<Math.abs(near.angle-angle))near=s}
+    out.test={angle,denom:360*fps/angle,isSafe,nearest:near,stops:near?Math.log2(angle/near.angle):null}}
+  return out}
+
+function calcEighths(inp){
+  const out={total:'-',totalF:'',days:'-',daysF:'',daysN:'',screen:'-',screenF:'',problem:''};
+  const blank=v=>v===undefined||v===null||String(v).trim()==='';
+  const num=v=>{const n=Number(String(v).trim());return isFinite(n)?n:NaN};
+  const isCount=n=>n>=0&&n<=1000000&&n%1===0;
+  const eighths=(w,e)=>{const wb=blank(w),eb=blank(e);if(wb&&eb)return null;const wn=wb?0:num(w),en=eb?0:num(e);return(isCount(wn)&&isCount(en))?8*wn+en:NaN};
+  const fmt=E=>Math.floor(E/8)+' '+(E%8)+'/8';
+  const short=E=>Math.floor(E/8)?fmt(E):(E%8)+'/8';
+  let E=0,anyRow=false,rowBad=false;
+  (inp.rows||[]).forEach(r=>{const t=eighths(r.w,r.e);if(t===null)return;anyRow=true;if(isNaN(t))rowBad=true;else E+=t});
+  if(rowBad){out.problem='Check the scene boxes. Pages and eighths must be whole numbers, 0 or more.';return out}
+  if(!anyRow){out.problem='Type a scene to start.';return out}
+  out.total=fmt(E);out.totalF=E+' eighths in all';
+  const C=eighths(inp.paceW,inp.paceE);
+  if(E===0)out.daysF='Scenes add up to nothing yet';
+  else if(C===null||C===0)out.daysF='Enter a planned pace above 0';
+  else if(isNaN(C)){out.daysF='Enter a planned pace above 0';out.problem='Check the pace boxes. Whole numbers only.'}
+  else{const days=Math.floor((E+C-1)/C);
+    out.days=days+(days===1?' day':' days');
+    out.daysF=E+' eighths / '+C+' a day = '+(E/C).toFixed(2)+(E%C?', rounded up':'');
+    if(days===1){const spare=C-E;out.daysN=spare===0?'Fills the day exactly':short(spare)+' under a 1-day fit'}
+    else{const last=E-C*(days-1);out.daysN=last===C?'Fills '+days+' days exactly':short(last)+' over a '+(days-1)+'-day fit'}}
+  const mpp=blank(inp.minPerPage)?NaN:num(inp.minPerPage);
+  if(isFinite(mpp)&&mpp>0){const sec=Math.round(E*mpp*60/8);out.screen=Math.floor(sec/60)+' min '+(sec%60)+' s';out.screenF=fmt(E)+' pages x '+mpp+' min a page'}
+  else out.screenF='Enter minutes a page, above 0';
+  return out}
+
+function calcCards(i){
+  const num=x=>(x===null||x===undefined||String(x).trim()===''?NaN:Number(x)),pos=x=>Number.isFinite(x)&&x>0,v={};
+  ['bitrate','hours','days','card','copies','drive','free','offload'].forEach(k=>{v[k]=num(i[k])});
+  const out={ok:false,gbHour:null,recordSec:null,gbDay:null,loads:null,gbCopy:null,tbCopy:null,tbAll:null,usable:null,perCopy:null,buy:null,spare:null,offloadSec:null};
+  if(pos(v.card)&&pos(v.offload))out.offloadSec=Math.round(v.card*1000/v.offload);
+  const ok=pos(v.bitrate)&&pos(v.hours)&&pos(v.days)&&pos(v.card)&&pos(v.drive)&&Number.isFinite(v.free)&&v.free>=0&&v.free<100&&Number.isInteger(v.copies)&&v.copies>=1;
+  if(!ok)return out;
+  const up=(a,b)=>Math.ceil(Number((a/b).toFixed(9)));
+  out.ok=true;out.gbHour=v.bitrate*.45;out.recordSec=Math.round(v.card/out.gbHour*3600);out.gbDay=out.gbHour*v.hours;out.loads=up(out.gbDay,v.card);
+  out.gbCopy=out.gbDay*v.days;out.tbCopy=out.gbCopy/1000;out.tbAll=out.gbCopy*v.copies/1000;out.usable=v.drive*1000*(100-v.free)/100;
+  out.perCopy=up(out.gbCopy,out.usable);out.buy=out.perCopy*v.copies;out.spare=out.usable-out.gbCopy/out.perCopy;
+  return out}
+
+const api={calcFlicker,calcEighths,calcCards};
+if(typeof window!=='undefined')window.Tools=api;
+if(typeof module!=='undefined'&&module.exports)module.exports=api;
+if(!root)return;
+
+const field=(k,label,unit,val,hint,extra)=>`<label class="tf"><span class="meta">${label}</span><span class="tf-row"><input data-k="${k}" type="number" inputmode="decimal" step="any" value="${val}" aria-label="${esc(label)}${unit?', in '+esc(unit):''}">${unit?`<span class="unit">${unit}</span>`:''}</span>${extra||''}${hint?`<span class="hint">${hint}</span>`:''}</label>`;
+const head=(n,kind,id,name,line)=>`<header class="tool-h"><span class="slug">${n} · ${kind}</span><h2 id="${id}-h">${name}</h2><p>${line}</p></header>`;
+root.innerHTML=`
+<article class="tool" id="tool-flicker" aria-labelledby="tool-flicker-h">
+  ${head('01','Camera','tool-flicker','Flicker-safe shutter','Find the shutter angles that sit on whole pulses of mains-powered light, so the picture does not flicker.')}
+  <div class="tool-in">
+    ${field('fps','Frame rate','fps',25,'',`<span class="tf-row"><select data-k="pick" aria-label="Quick pick a frame rate"><option value="">Quick pick</option>${[23.976,24,25,30,48,50,60,100,120].map(v=>`<option>${v}</option>`).join('')}</select></span>`)}
+    ${field('hz','Mains frequency','Hz',50,'50 Hz in India and most of Europe, 60 Hz in North America. Type 49.5 for a drifting generator.')}
+    ${field('angle','Shutter angle to test','degrees',180)}
+  </div>
+  <div class="tool-out" aria-live="polite">
+    <span class="meta">Answer</span><p class="tool-big" data-o="verdict">${DASH}</p><p class="tool-line" data-o="nearest"></p><p class="tool-formula" data-o="formula"></p>
+    <span class="meta tool-sub">Safe angles up to 360</span><ul class="tool-list" data-o="rows"></ul>
+    <p class="tool-note">Only for lights that follow the mains: magnetic-ballast HMI, tubes, some LEDs. LEDs with their own dimming, screens and projectors pulse at other rates, and tungsten barely flickers. Check the monitor.</p>
+  </div>
+</article>
+<article class="tool" id="tool-eighths" aria-labelledby="tool-eighths-h">
+  ${head('02','Schedule','tool-eighths','Page count in eighths','Adds up script pages written in eighths, then works out how many shoot days they need at the pace you plan.')}
+  <div class="tool-in">
+    <div class="tf"><span class="meta">Scenes</span>
+      <div class="te-row te-head"><span class="meta">Whole pages</span><span></span><span class="meta">Eighths</span><span></span></div>
+      <div data-o="scenes"></div>
+      <button type="button" class="tool-btn" data-a="add">Add a scene</button>
+      <span class="hint">Eighths run 0 to 7. Eight or more rolls into whole pages.</span></div>
+    <div class="tf"><span class="meta">Your plan</span>
+      <div class="te-row"><input data-k="paceW" type="number" inputmode="numeric" min="0" step="1" value="4" aria-label="Planned pages a day, whole pages"><span class="unit">pages a day</span><input data-k="paceE" type="number" inputmode="numeric" min="0" step="1" value="0" aria-label="Planned pages a day, eighths"><span class="unit">/ 8</span></div>
+      <div class="te-row te-one"><input data-k="mpp" type="number" inputmode="decimal" min="0" step="any" value="1" aria-label="Screen minutes per page"><span class="unit">minutes a page on screen</span></div></div>
+  </div>
+  <div class="tool-out" aria-live="polite">
+    <span class="meta">Total pages</span><p class="tool-big" data-o="total">${DASH}</p><p class="tool-formula" data-o="totalF"></p>
+    <span class="meta tool-sub">Shoot days at your pace</span><p class="tool-big ok" data-o="days">${DASH}</p><p class="tool-formula"><span data-o="daysF"></span><br><span data-o="daysN"></span></p>
+    <span class="meta tool-sub">Screen time, rule of thumb</span><p class="tool-mid" data-o="screen">${DASH}</p><p class="tool-formula" data-o="screenF"></p>
+    <p class="tool-line" data-o="problem"></p>
+    <p class="tool-note">Pages are a rough guide to time. Two eighths of a stunt can take a day. This only adds and divides. It does not suggest a pace.</p>
+  </div>
+</article>
+<article class="tool" id="tool-cards" aria-labelledby="tool-cards-h">
+  ${head('03','Data','tool-cards','Cards and drives','How many cards and drives a shoot needs, with every copy you keep.')}
+  <div class="tool-in two">
+    ${field('bitrate','Recording bitrate','Mb/s',400,'Read it from your camera manual for your codec, resolution and frame rate.')}
+    ${field('hours','Hours rolled per shoot day','hours',1.5)}
+    ${field('days','Shoot days','days',12)}
+    ${field('card','Card size','GB',256)}
+    ${field('copies','Copies of everything','copies',3)}
+    ${field('drive','Drive size','TB',4)}
+    ${field('free','Space to leave free per drive','%',10)}
+    ${field('offload','Offload speed','MB/s',200,'Depends on your card reader, cable and drive.')}
+  </div>
+  <div class="tool-out" aria-live="polite">
+    <span class="meta">Drives to buy, estimate</span><p class="tool-big ok" data-o="buy">${DASH}</p>
+    <ul class="tool-list">${[['gbh','GB per hour'],['rec','Record time per card'],['day','GB per day'],['loads','Card loads per day'],['tbc','TB per copy'],['tba','TB, all copies'],['dpc','Drives per copy'],['spare','Spare space per drive'],['off','Offload one full card']].map(([k,l])=>`<li><span>${l}</span><span data-o="${k}">${DASH}</span></li>`).join('')}</ul>
+    <p class="tool-formula" data-o="formula"></p>
+    <p class="tool-note">Estimates only. A drive holds a little less than its label says, and a verified copy takes longer than a plain one.</p>
+  </div>
+</article>`;
+
+const f1=x=>String(Math.round(x*10)/10);
+const wire=(id,paint)=>{const el=D.getElementById(id),o=k=>el.querySelector('[data-o="'+k+'"]'),v=k=>el.querySelector('[data-k="'+k+'"]');
+  const run=()=>paint(el,o,v);el.addEventListener('input',run);return{el,o,v,run}};
+
+{const T=wire('tool-flicker',(el,o,v)=>{
+  const r=calcFlicker({fps:parseFloat(v('fps').value),hz:parseFloat(v('hz').value),angle:parseFloat(v('angle').value)}),V=o('verdict'),N=o('nearest'),R=o('rows'),F=o('formula');
+  V.className='tool-big';N.textContent='';R.innerHTML='';
+  if(!r.ok){V.textContent=DASH;F.textContent='Enter a frame rate and a mains frequency, from 1 to 1000.';return}
+  F.textContent='Safe angle = 360 × '+v('fps').value+' × n ÷ (2 × '+v('hz').value+') = '+f1(r.step)+' × n';
+  const t=r.test,pick=t&&!t.isSafe&&t.nearest?f1(t.nearest.angle):'';
+  R.innerHTML=r.safe.map(s=>`<li${f1(s.angle)===pick?' class="pick"':''}><span>${f1(s.angle)}°</span><span>1/${f1(s.denom)} s</span></li>`).join('');
+  if(r.noSafe){V.textContent='No safe angle';N.textContent='The frame rate is more than twice the mains frequency, so no shutter angle sits on whole light pulses.';return}
+  if(!t){V.textContent=DASH;N.textContent='Enter a shutter angle from 0 to 360 to test it.';return}
+  V.classList.toggle('ok',t.isSafe);V.textContent=f1(t.angle)+'° '+(t.isSafe?'is safe':'is not safe');
+  if(t.isSafe)N.textContent='Shutter speed 1/'+f1(t.denom)+' s. Flicker-free under these lights.';
+  else{const s=Math.abs(t.stops).toFixed(2),w=s==='1.00'?'stop':'stops';
+    N.textContent='Nearest safe: '+f1(t.nearest.angle)+'° (1/'+f1(t.nearest.denom)+' s), '+(s==='0.00'?'no change in exposure':t.stops>0?'costs '+s+' '+w+' of light':'adds '+s+' '+w+' of light')+'.'}});
+ T.v('pick').addEventListener('change',e=>{if(e.target.value){T.v('fps').value=e.target.value;T.run()}});T.run()}
+
+{const T=wire('tool-eighths',(el,o,v)=>{
+  const rows=[...o('scenes').querySelectorAll('.te-row')].map(r=>{const i=r.querySelectorAll('input');return{w:i[0].value,e:i[1].value}});
+  const r=calcEighths({rows,paceW:v('paceW').value,paceE:v('paceE').value,minPerPage:v('mpp').value}),d=x=>x==='-'?DASH:x;
+  o('total').textContent=d(r.total);o('totalF').textContent=r.totalF;o('days').textContent=d(r.days);o('daysF').textContent=r.daysF;o('daysN').textContent=r.daysN;
+  o('screen').textContent=d(r.screen);o('screenF').textContent=r.screenF;o('problem').textContent=r.problem});
+ const scenes=T.o('scenes'),add=()=>{const n=scenes.children.length+1;
+   scenes.insertAdjacentHTML('beforeend',`<div class="te-row"><input type="number" inputmode="numeric" min="0" step="1" aria-label="Scene ${n}, whole pages"><span class="unit">pages</span><input type="number" inputmode="numeric" min="0" step="1" aria-label="Scene ${n}, eighths"><span class="unit">/ 8</span></div>`)};
+ for(let k=0;k<5;k++)add();
+ T.el.querySelector('[data-a="add"]').addEventListener('click',()=>{add();T.run();const r=scenes.lastElementChild;if(r)r.querySelector('input').focus()});T.run()}
+
+{const IDS=['bitrate','hours','days','card','copies','drive','free','offload'];
+ const n=(x,d,u)=>x===null?DASH:x.toLocaleString('en-IN',{minimumFractionDigits:d,maximumFractionDigits:d})+(u?' '+u:'');
+ const ms=s=>s===null?DASH:Math.floor(s/60)+' min '+(s%60)+' s';
+ wire('tool-cards',(el,o,v)=>{const i={};IDS.forEach(k=>{i[k]=v(k).value});const r=calcCards(i);
+  o('buy').textContent=r.buy===null?DASH:n(r.buy,0)+(r.buy===1?' drive':' drives');
+  o('gbh').textContent=n(r.gbHour,1,'GB');o('rec').textContent=ms(r.recordSec);o('day').textContent=n(r.gbDay,1,'GB');o('loads').textContent=n(r.loads,0);
+  o('tbc').textContent=n(r.tbCopy,2,'TB');o('tba').textContent=n(r.tbAll,2,'TB');o('dpc').textContent=n(r.perCopy,0);o('spare').textContent=n(r.spare,0,'GB');o('off').textContent=ms(r.offloadSec);
+  o('formula').textContent=r.ok?i.bitrate+' Mb/s × 0.45 = '+n(r.gbHour,1)+' GB an hour. '+n(r.gbDay,1)+' GB a day × '+i.days+' days = '+n(r.gbCopy,0)+' GB a copy. '+n(r.usable,0)+' GB usable per drive: '+r.perCopy+' per copy × '+i.copies+' copies = '+r.buy+' drives.'
+    :'Fill in every box with a number above zero to see the answer.'}).run()}
+})();
+
+(()=>{
 if(!window.Light)window.Light={mount(){},mountAll(){},update(){},refresh(){},precompile(){},setPaused(){},paused:()=>false,onTick(){return()=>{}}};
 if(!window.Media)window.Media={mountAll(){},setPaused(){},preview(){},open(){},close(){},has:()=>false,tc:()=>'',isOpen:()=>false};
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -2328,7 +2536,7 @@ const sheetEl=$('#sheet');if(sheetEl)sheetEl.innerHTML=Array.from({length:18},(_
 const ending=id=>`<section class="endcard" aria-labelledby="${id}-h"><div class="sec"><h2 class="meta" id="${id}-h">Contact</h2><span class="slug">Gurugram, India</span></div>
   <a class="endcard-t" href="#contact" data-go="contact" tabindex="-1">Let’s make <i>something.</i></a>
   <div class="mailrow"><a class="mail" id="${id}" href="mailto:thekaranchaudhary3208@gmail.com" aria-label="thekaranchaudhary3208@gmail.com">thekaranchaudhary3208<wbr>@gmail.com</a><button class="copy" type="button" data-copy="${id}">Copy email</button><a class="open" href="#contact" data-go="contact">All contact details</a></div></section>`;
-['work','about','photographs'].forEach(k=>$('#p-'+k+' > .foot').insertAdjacentHTML('beforebegin',ending(k+'-email')));
+['work','tools','about','photographs'].forEach(k=>$('#p-'+k+' > .foot').insertAdjacentHTML('beforebegin',ending(k+'-email')));
 const note=(label,arr,c)=>`<div class="note${c?' '+c:''}"><h2 class="meta">${label}</h2><div>${arr.map(t=>`<p>${ty(t)}</p>`).join('')}</div></div>`;
 const excerptOnly=p=>Media.has(p.id,'excerpt');
 function projectPage(p,still){
@@ -2372,7 +2580,7 @@ function projectPage(p,still){
   ${ending('film-email')}
   ${foot(ty('Karan Chaudhary · '+p.title))}`}
 
-const PAGES=['home','work','photographs','about','contact'];
+const PAGES=['home','work','photographs','tools','about','contact'];
 const slate=$('#slate'),slateTxt=$('#slate-txt'),navEl=$('#nav'),mainEl=$('#main');
 const sheetMenu=$('#sheet-menu'),menuBtn=$('#menu-btn');
 const pos={},from={},FOC='a[href],button,[tabindex]';let current=null,navToken=0;
