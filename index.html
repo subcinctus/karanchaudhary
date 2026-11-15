@@ -566,6 +566,20 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
   .th-tip i{width:128px}
   .frames figure{grid-column:1/-1}
 }
+
+
+.eps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gut) var(--gut);row-gap:clamp(28px,3vw,44px)}
+.ep{display:block;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left;text-decoration:none;cursor:pointer}
+.ep-im{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;background:#070807;border:1px solid var(--line)}
+.ep-im img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
+.ep:hover .ep-im img,.ep:focus-visible .ep-im img{transform:scale(1.03)}
+.ep-im i{position:absolute;left:14px;bottom:14px;width:44px;height:44px;border-radius:50%;background:rgba(11,12,11,.62);border:1px solid rgba(238,234,225,.5)}
+.ep-im i::after{content:"";position:absolute;left:18px;top:14px;border-left:12px solid var(--ivory);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.ep-t{display:block;margin-top:12px;font-family:var(--display);font-size:clamp(20px,1.7vw,26px);line-height:1.15}
+.ep:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+@media (max-width:980px){.eps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.eps{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.ep-im img{transition:none}}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -613,13 +627,6 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
     </div>
   </div>
 
-  <section class="thesis" aria-label="A note">
-    <h2 class="meta">A note, before the films</h2>
-    <p class="ln">I grew up in a family with no connection to film.</p>
-    <p class="ln">The first thing anyone taught me was <i>how to see.</i></p>
-    <p class="ln">Then I learned to light the frame.</p>
-  </section>
-
   <div class="sec first"><h2 class="meta">The films</h2><span class="slug" id="films-count">Selected&nbsp;· 05 titles</span></div>
   <div id="reels"></div>
 
@@ -628,10 +635,10 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
       <p class="slug loc">INT. THE CLASSROOM — LATE AFTERNOON</p>
       <div class="frame" id="hinge-frame" data-pid="the-classroom" data-scene="classroom" data-hero data-gate data-seed="6.8" role="img" aria-label="Light study: late light through classroom blinds, chalk dust in the air"></div>
       <i class="matte m-t"></i><i class="matte m-b"></i><i class="matte m-l"></i><i class="matte m-r"></i><i class="frameline" aria-hidden="true"></i>
-      <blockquote class="q"><p style="margin:0">“There was no one to hand the logistics to, so the person holding the camera was also the one finding the room, the people and the time.”</p><cite class="slug">On The Classroom</cite></blockquote>
+      <blockquote class="q"><p style="margin:0">“There was no one to hand the logistics to, so whoever held the camera also found the room and the people.”</p><cite class="slug">On The Classroom</cite></blockquote>
       <div class="card"><h3>The Classroom</h3><span class="slug"><span id="hinge-n">05</span>&nbsp;— Series, four episodes&nbsp;· Co-director, cinematographer, editor</span><a class="open" href="#the-classroom" data-go="the-classroom">About the film<span class="vh">: The Classroom</span></a></div>
       <div class="scrim"></div>
-      <p class="l4">Now I want to build <i>everything around it.</i></p>
+      <p class="l4">Now I want to learn <i>producing.</i></p>
       <div class="bloom"></div><div class="flood"></div>
     </div>
   </section>
@@ -639,14 +646,14 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
   <div class="endband tone-light" id="end">
     <div class="quote-wrap">
       <h2 class="meta">Why producing</h2>
-      <p class="quote">Less about where the light sits, more about how a film gets made at all: <i>the schedule, the money, the people.</i></p>
+      <p class="quote">I got more interested in how a whole film gets made, not only how it is shot.</p>
     </div>
     <div class="sec"><h2 class="meta">Now</h2><span class="slug">Camera team</span></div>
     <div class="now"><span class="slug">2025–now</span><div><h3>Camera department</h3><span class="meta">Camera assistant&nbsp;· a project under producer Boney&nbsp;Kapoor</span></div></div>
     <div class="sec"><h2 class="meta">Off camera</h2><span class="slug">Direction&nbsp;· planning&nbsp;· media</span></div>
     <div class="films" id="offcam" style="margin-top:0"></div>
     <div class="sec"><h2 class="meta">Training</h2><span class="slug">From&nbsp;2019</span></div>
-    <div class="training"><span class="meta">Seeing, then making</span><div><p class="big-text">Learned to see under Nitin&nbsp;Rai at the Raghu&nbsp;Rai Center for Photography. Trained in cinematography and direction at Whistling&nbsp;Woods International, Mumbai (B.Sc., Tata Institute of Social Sciences).</p><p style="margin:28px 0 0"><a class="open" href="#about" data-go="about">About Karan</a></p></div></div>
+    <div class="training"><span class="meta">Photography, then film</span><div><p class="big-text">Studio photography under Nitin&nbsp;Rai at the Raghu&nbsp;Rai Center for Photography, 2019 to 2020. Trained in cinematography and direction at Whistling&nbsp;Woods International, Mumbai (B.Sc., Tata Institute of Social Sciences).</p><p style="margin:28px 0 0"><a class="open" href="#about" data-go="about">About Karan</a></p></div></div>
     <section class="coda" aria-label="Where this is going"><p class="ln">Heading toward producing,</p><p class="ln">and one day <i>a small studio of my own in India.</i></p></section>
   </div>
 
@@ -719,9 +726,9 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
     <figure class="portrait rise"><div class="frame r45" data-scene="afternoon" data-zoom=".85" data-t="90" data-seed="2" role="img" aria-label="Light study: window light on a wall"></div><figcaption class="slug">Light study&nbsp;· the room</figcaption></figure>
     <div class="bio-col rise" style="--i:1">
       <div class="bio">
-        <p>I grew up in Gurugram in a family with no connection to film or photography. My first real lessons in seeing came from studio photography under Nitin&nbsp;Rai. My first real lesson in making something came from a school series called The Classroom, which I co-directed, shot and edited with friends.</p>
+        <p>I grew up in Gurugram. I studied studio photography under Nitin&nbsp;Rai, and at school I made a series called The Classroom with friends. I co-directed, shot and edited it.</p>
         <p>I trained in cinematography and direction at Whistling&nbsp;Woods International in Mumbai. Alongside and after my degree I shot short and independent films, worked with the direction team on a commercial campaign, and now work as a camera assistant.</p>
-        <p>Over time the questions that kept me up changed. Less about where the light sits, more about how a film gets made at all: the schedule, the money, the people. That is where I am heading, toward producing, and one day a small studio of my own in India.</p>
+        <p>Over time I got more interested in how a whole film gets made, not only how it is shot. That is where I am heading, toward producing, and one day a small studio of my own in India.</p>
       </div>
       <dl class="notes" id="notes"></dl>
     </div>
@@ -792,11 +799,15 @@ const PROJECTS=[
          strip:{src:"media/katputli/katputli-strip.jpg",cols:10,rows:6,n:60},ratio:"16/9",fps:29.97,dur:100.47}},
  {id:"khauf",title:"Khauf",type:"Series, Amazon Prime Video",role:"Camera assistant",year:"2023",runtime:"",director:"",prod:"",scene:"petrol",
   watch:"https://www.youtube.com/watch?v=eFZfMm4ltM8",watchLabel:"Watch the trailer on YouTube",playLabel:"Play the trailer",
-  line:"",study:[],about:[],approach:[]},
+  line:"",study:[],about:[],approach:[],
+  media:{poster:"https://i.ytimg.com/vi/eFZfMm4ltM8/maxresdefault.jpg",ratio:"16/9"}},
  {id:"the-classroom",title:"The Classroom",type:"Series, four episodes",role:"Co-director, cinematographer, editor",year:"",runtime:"",director:"",prod:"Made with friends at Suncity School",scene:"classroom",watch:"https://www.youtube.com/playlist?list=PLLjcaF3ur7ZmYd65-XA-UPcxpriz8HQtf",watchLabel:"Watch the series on YouTube",playLabel:"Play the series",
   line:"A four-episode web series made with friends at school, with a Diwali special, released on YouTube.",
-  study:["Late light through classroom blinds, chalk dust in the air. The room where it started."],
-  about:[],approach:[]}
+  study:["Late light through classroom blinds, chalk dust in the air."],
+  about:[],approach:[],
+  episodes:[{id:"r10i9bn5318",title:"Episode One: Pilot"},{id:"N01G86ViFqA",title:"Episode Two: Selection Day"},{id:"yCcOttY1Ud0",title:"Fun-day, the Diwali special"},
+            {id:"OdnXjkAp_GU",title:"Episode Three: Stream Wars"},{id:"ETRj2UtLtcA",title:"Episode Four: A Christmas of Consequence"}],
+  media:{poster:"https://i.ytimg.com/vi/r10i9bn5318/maxresdefault.jpg",ratio:"16/9"}}
 ];
 const FILMO=[
  ["Cinematography",[["","The Tower","Director of photography · short film","the-tower"],["","Katputli","Director of photography · Hindi short film","katputli"],["","Damakgardh","Cinematography team · Hindi short film","damakgardh"],["2021–2024","Independent films","Lead cinematographer",""],["2021–2024","Five larger short films","Assistant cinematographer",""]]],
@@ -817,7 +828,7 @@ const TIMELINE=[
  ["2020–2022","Mitti to Matka","Gurugram · Media manager","Media for an initiative supporting local potters during COVID."],
  ["2019–2020","Studio photography","Under Nitin Rai, Raghu Rai Center for Photography","Studio fashion photography, July 2019 to March 2020."]
 ];
-const NOTES=[["Based in","Gurugram, India"],["Originally from","Gurugram, Haryana"],["Trained at","Whistling Woods International · B.Sc., Tata Institute of Social Sciences"],["Learned to see under","Nitin Rai"],
+const NOTES=[["Based in","Gurugram, India"],["Originally from","Gurugram, Haryana"],["Trained at","Whistling Woods International · B.Sc., Tata Institute of Social Sciences"],["Studio photography under","Nitin Rai"],
  ["Working with","RED, Sony Venice, Sony FX and Alpha"],["Finishing in","DaVinci Resolve"],
  ["Interested in",""],["Currently watching",""],["A filmmaker I keep returning to",""],["A cinematographer who inspires me",""],["Currently developing",""]];
 const REFS=[];        /* e.g. ["Cinematographer","Name"], ["Film","Title"] */
@@ -2078,7 +2089,8 @@ try{io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target._loop;if(!v)
 function fallback(el){delete el.dataset.clip;delete el.dataset.still;el.classList.remove('has-video','has-still','is-media');
   if(el._lbl)el.setAttribute('aria-label',el._lbl);const c=el.querySelector('.cap span');if(c&&el._cap)c.textContent=el._cap;if(W.Light){Light.mount(el);Light.refresh&&Light.refresh()}}
 function attach(el){
-  if(el._media)return;const p=find(el.dataset.pid),m=M(p);if(!m.loop&&!m.poster)return;el._media=true;
+  if(el._media)return;const p=find(el.dataset.pid),m=M(p);if(!m.loop&&!m.poster)return;
+  if(ENV==='artifact'&&!m.loop&&/^https?:/i.test(m.poster))return;el._media=true;
   let left=(m.poster?1:0)+(m.loop&&!SAVE?1:0);const gone=()=>{if(--left<=0)fallback(el)};
   if(left){el._lbl=el.getAttribute('aria-label');el.setAttribute('aria-label',(m.loop&&!SAVE?'Clip from ':'Still from ')+p.title+(p.line?': '+p.line:''));
     const c=el.querySelector('.cap span');if(c){el._cap=c.textContent;c.textContent=p.title.toUpperCase()}
@@ -2267,8 +2279,8 @@ function endCard(){const i=PROJECTS.indexOf(cur),nx=i>=0?PROJECTS[(i+1)%PROJECTS
   E.end.innerHTML=`<p class="slug">FADE OUT.</p><p class="th-line">${esc(cur.title)}</p><p class="th-links"><button type="button" class="th-btn" data-th="again">Watch again</button>${nx&&nx!==cur?`<a class="open" href="#${nx.id}" data-go="${nx.id}" data-th="go">Next film<span class="vh">: ${esc(nx.title)}</span></a>`:''}<button type="button" class="th-btn" data-th="close">Close</button></p>`;
   E.end.hidden=false;th.classList.remove('idle');E.end.querySelector('button').focus()}
 let startAt=null;
-function open(id,from,at){
-  const p=find(id),m=M(p);if(!p)return;startAt=(at>=0)?+at:null;const P=partsOf(m);srcs=P?[]:sources(m);const emb=!P&&!srcs.length&&!driveId(m)&&canEmbed(p)?embedUrl(p.watch):'';if(!P&&!srcs.length&&!driveId(m)&&!emb)return;
+function open(id,from,at,ep,epTitle){
+  const p=find(id),m=M(p);if(!p)return;startAt=(at>=0)?+at:null;const P=partsOf(m);srcs=P?[]:sources(m);const emb=!P&&!srcs.length&&!driveId(m)&&canEmbed(p)?embedUrl(ep?'https://www.youtube.com/watch?v='+ep:p.watch):'';if(!P&&!srcs.length&&!driveId(m)&&!emb)return;
   if(!th)build();cur=p;si=0;ended=false;scrubbing=false;perr=0;openN++;opener=from||D.activeElement;fps=+m.fps||25;
   const n=ratio(m);th.style.setProperty('--ar',String(n));th.style.setProperty('--pos','0');th.style.setProperty('--buf','0');
   E.title.textContent='SCREENING — '+p.title.toUpperCase()+(has(id,'excerpt')?' · EXCERPT':'');E.spec.textContent='';E.tc.textContent=E.dur.textContent='00:00:00:00';E.seek.value=0;
@@ -2281,7 +2293,7 @@ function open(id,from,at){
   clearTimeout(hideT);theatreOpen=true;th.hidden=false;void th.offsetWidth;th.classList.add('on');E.play.focus({preventScroll:true});
   if('mediaSession' in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:p.title,artist:'Karan Chaudhary'})}catch(e){}}
   if(emb){th.classList.remove('waiting');th.classList.add('embed');const f=D.createElement('iframe');f.src=emb;f.allow='autoplay; fullscreen; encrypted-media; picture-in-picture';f.title=p.title;f.setAttribute('allowfullscreen','');f.referrerPolicy='strict-origin-when-cross-origin';E.gate.appendChild(f);
-    E.title.textContent=(p.watchLabel?p.watchLabel.replace(/^Watch the /i,'').replace(/ on .*$/i,'').toUpperCase():'SCREENING')+' — '+p.title.toUpperCase();E.spec.textContent=/vimeo/i.test(emb)?'VIMEO':'YOUTUBE';E.close.focus({preventScroll:true})}
+    E.title.textContent=ep&&epTitle?p.title.toUpperCase()+' — '+String(epTitle).toUpperCase():(p.watchLabel?p.watchLabel.replace(/^Watch the /i,'').replace(/ on .*$/i,'').toUpperCase():'SCREENING')+' — '+p.title.toUpperCase();E.spec.textContent=/vimeo/i.test(emb)?'VIMEO':'YOUTUBE';E.close.focus({preventScroll:true})}
   else if(P){const a0=startAt!=null?startAt:(last[p.id]||0);startAt=null;E.dur.textContent=tc(P.total,fps);partsStart(P,a0<P.total-5?a0:0)}
   else if(srcs.length)load();else fail();say('Screening: '+p.title)}
 function close(leaving){
@@ -2293,7 +2305,7 @@ function close(leaving){
   ['main','nav'].forEach(k=>{const el=$('#'+k);if(el)el.inert=false});D.body.style.overflow='';
   if(W.Light)Light.setPaused(lightWas||held);if(!held)loops.forEach(v=>{if(v.parentNode&&v.parentNode._vis)playLoop(v)});
   if(!leaving&&opener&&opener.isConnected)opener.focus({preventScroll:true})}
-D.addEventListener('click',e=>{const b=e.target.closest('[data-play]');if(!b)return;e.preventDefault();open(b.dataset.play,b,b.dataset.at!=null?+b.dataset.at:-1)});
+D.addEventListener('click',e=>{const b=e.target.closest('[data-play]');if(!b)return;e.preventDefault();open(b.dataset.play,b,b.dataset.at!=null?+b.dataset.at:-1,b.dataset.ep||'',b.dataset.epTitle||'')});
 W.Media={mountAll,setPaused,preview,open,close,has,tc,isOpen:()=>theatreOpen};
 })();
 
@@ -2316,9 +2328,10 @@ const say=t=>{announceEl.textContent='';setTimeout(()=>{announceEl.textContent=t
 function frame(o,ratio,cap,attrs,label,lightOnly){
   return `<div class="frame ${ratio||''}${cap?' has-cap':''}" data-scene="${o.scene}" data-seed="${o.seed||0}"${o.id&&!lightOnly?` data-pid="${o.id}"`:''}${attrs||''} role="img" aria-label="${esc(label||('Light study, standing in for '+o.title))}">${cap?`<div class="cap"><span>${cap[0]}</span><span>${cap[1]||''}</span></div>`:''}</div>`}
 const foot=label=>`<footer class="foot"><span class="meta">${label}</span><button class="motion" type="button" data-motion><i aria-hidden="true"></i><span>Pause light</span></button><span class="fadeout">FADE OUT.</span></footer>`;
-const LAY=['a','b','c','d'],RAT=['r239','r185','r239','r2'];
-$('#reels').innerHTML=PROJECTS.filter(p=>p.id!=='the-classroom').slice(0,4).map((p,i)=>`<article class="reel ${LAY[i]}">
-  <a class="shot" href="#${p.id}" data-go="${p.id}" tabindex="-1" aria-label="Open ${esc(p.title)}">${frame(p,RAT[i],['LIGHT STUDY · STAND-IN',p.n+' / '+NP])}</a>
+const LAY=['a','b','c','d'],RAT=['r239','r185','r239','r2','r239','r2','r185','r239'];
+const rtOf=p=>String(p.runtime||(p.media&&p.media.runtime)||'').toUpperCase();
+$('#reels').innerHTML=PROJECTS.filter(p=>p.id!=='the-classroom').map((p,i)=>`<article class="reel ${LAY[i%4]}">
+  <a class="shot" href="#${p.id}" data-go="${p.id}" tabindex="-1" aria-label="Open ${esc(p.title)}">${frame(p,RAT[i%8],['LIGHT STUDY · STAND-IN',rtOf(p)])}</a>
   <h3>${esc(p.title)}</h3>
   <div class="row2"><span class="slug">${p.n}\u00a0— ${esc(p.type.toUpperCase())}${p.role||p.year?'<br>'+ty([p.role,p.year].filter(Boolean).join(' · ')):''}</span><p>${ty(p.line||'')}</p><a class="open" href="#${p.id}" data-go="${p.id}">About the film<span class="vh">: ${esc(p.title)}</span></a></div></article>`).join('');
 const rowHTML=([y,t,r,id])=>{const p=id&&PROJECTS.find(x=>x.id===id),yc=y?`<span class="y">${esc(y)}</span>`:'';
@@ -2358,14 +2371,19 @@ function projectPage(p,still){
     if(!jump)return `<span class="cf" style="${bg}"></span>`;
     const at=(k+.5)*m.dur/st.n,t=Media.tc(at,m.fps||25).slice(0,8);
     return `<button type="button" class="cf" style="${bg}" data-play="${p.id}" data-at="${at.toFixed(2)}" aria-label="Play ${esc(p.title)} from ${t}"><span aria-hidden="true">${t}</span></button>`}).join('')}</div>`:'';
-  return `<div class="pp-hero bleed">${frame(p,'',['LIGHT STUDY · STAND-IN',p.n+' / '+NP],still?' data-hero':' data-hero data-expose="900"')}</div>
+  const eps=p.episodes||[],epHere=Media.has(p.id,'embed');
+  const epsHTML=eps.length?`<div class="sec"><h2 class="meta">Episodes</h2><span class="slug">${two(eps.length)}\u00a0on YouTube${epHere?'\u00a0· they play here':''}</span></div>
+  <div class="eps">${eps.map((e,k)=>{const inner=`${epHere?`<span class="ep-im"><img src="https://i.ytimg.com/vi/${esc(e.id)}/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><i aria-hidden="true"></i></span>`:''}<span class="ep-t">${esc(e.title)}</span>`;
+    return epHere?`<button type="button" class="ep" data-play="${p.id}" data-ep="${esc(e.id)}" data-ep-title="${esc(e.title)}" aria-label="Play ${esc(e.title)}">${inner}</button>`
+                 :`<a class="ep" href="https://www.youtube.com/watch?v=${esc(e.id)}" target="_blank" rel="noopener">${inner}</a>`}).join('')}</div>`:'';
+  return `<div class="pp-hero bleed">${frame(p,'',['LIGHT STUDY · STAND-IN',rtOf(p)],still?' data-hero':' data-hero data-expose="900"')}</div>
   <h1 class="pp-title" tabindex="-1"><span class="ln"><span>${esc(p.title)}</span></span></h1>
   ${p.line?`<p class="pp-line rise">${ty(p.line)}</p>`:''}
   ${acts?`<div class="pp-actions rise">${acts}</div>`:''}
   ${about.length?note('The film',about,'lead'):study.length?note('The light',study,'lead'):''}
   <dl class="credits rise">${cred.map(([k,v])=>`<div><dt class="meta">${k}</dt><dd>${ty(v)}</dd></div>`).join('')}</dl>
   ${approach.length?note('Visual approach',approach):''}${about.length&&study.length?note('The light',study):''}
-  ${sheet}
+  ${epsHTML}${sheet}
   ${stills.length?`<div class="sec"><h2 class="meta">Frames</h2><span class="slug">${two(stills.length)}\u00a0stills from the film</span></div>
   <div class="frames">${stills.map((s,k)=>`<figure><img src="${esc(s.src||s)}" alt="${esc(s.alt||('Still '+(k+1)+' from '+p.title))}" loading="lazy" decoding="async"></figure>`).join('')}</div>`
   :study.length?`<div class="sec"><h2 class="meta">Light studies</h2><span class="slug">Three framings of the same light</span></div>
@@ -2374,7 +2392,7 @@ function projectPage(p,still){
     <figure class="g2">${frame({...p,seed:p.seed+2},'',null,' data-zoom=".55"','Light study for '+p.title+', close',true)}<figcaption class="slug">Close</figcaption></figure>
     <figure class="g3">${frame({...p,seed:p.seed+3},'',null,' data-zoom=".38"','Light study for '+p.title+', detail',true)}<figcaption class="slug">Detail</figcaption></figure>
   </div>`:''}
-  <a class="next" href="#${nx.id}" data-go="${nx.id}" aria-label="Next film: ${esc(nx.title)}"><div class="sec" style="margin:0 0 18px"><h2 class="meta">Next film</h2><span class="slug">${nx.n} / ${NP}</span></div>${frame(nx,'',null)}<h3>${esc(nx.title)}</h3></a>
+  <a class="next" href="#${nx.id}" data-go="${nx.id}" aria-label="Next film: ${esc(nx.title)}"><div class="sec" style="margin:0 0 18px"><h2 class="meta">Next film</h2><span class="slug">${nx.n} of ${NP}</span></div>${frame(nx,'',null)}<h3>${esc(nx.title)}</h3></a>
   ${ending('film-email')}
   ${foot(ty('Karan Chaudhary · '+p.title))}`}
 
