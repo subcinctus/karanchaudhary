@@ -599,7 +599,6 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
   <nav class="links" aria-label="Main">
     <a href="#work" data-go="work">Work</a>
     <a href="#photographs" data-go="photographs" data-photos hidden>Photographs</a>
-    <a href="#archive" data-go="archive">Archive</a>
     <a href="#about" data-go="about">About</a>
     <a href="#contact" data-go="contact">Contact</a>
   </nav>
@@ -609,7 +608,7 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
   <div class="top"><span class="brand">Karan Chaudhary</span><button type="button" id="menu-close">Close</button></div>
   <nav aria-label="Main menu">
     <a href="#home" data-go="home">Home</a><a href="#work" data-go="work">Work</a><a href="#photographs" data-go="photographs" data-photos hidden>Photographs</a>
-    <a href="#archive" data-go="archive">Archive</a><a href="#about" data-go="about">About</a><a href="#contact" data-go="contact">Contact</a>
+    <a href="#about" data-go="about">About</a><a href="#contact" data-go="contact">Contact</a>
   </nav>
   <div class="bottom"><span class="slug">Gurugram, India</span><button class="motion" type="button" data-motion><i aria-hidden="true"></i><span>Pause light</span></button></div>
 </div>
@@ -695,38 +694,6 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
   <div class="lede rise"><h2 class="meta">Plates</h2><span class="slug">Studio&nbsp;· people&nbsp;· places</span></div>
   <div class="book" id="book"></div>
   <footer class="foot"><span class="meta">Karan&nbsp;Chaudhary&nbsp;· Photographs</span><button class="motion" type="button" data-motion><i aria-hidden="true"></i><span>Pause light</span></button><span class="fadeout">FADE OUT.</span></footer>
-</section>
-
-<section class="page tone-dark" id="p-archive" data-tone="dark" aria-label="Archive">
-  <h1 class="ptitle" tabindex="-1"><span class="ln"><span>The <i>archive</i></span></span></h1>
-  <div class="lede rise"><h2 class="meta">Light studies&nbsp;· <span class="nb">rolls 01–03</span></h2><span class="slug">Rendered studies of light</span></div>
-  <div class="contact-sheet rise" style="--i:1" id="sheet" role="img" aria-label="Contact sheet: 18 light-study frames on three rolls (window light, a night city, a sandstone jaali); frames 4, 9 and 15 are circled"></div>
-  <p class="slug" style="margin-top:16px">Light studies rendered for this site. Not photographs.</p>
-  <div class="sec"><h2 class="meta">Lighting plot</h2><span class="slug">Illustrative&nbsp;· not from a shoot</span></div>
-  <div class="plot">
-    <p class="big-text">One hard source through the window. A bounce to lift the shadow side. A practical left in frame, so the eye has somewhere to rest.</p>
-    <figure>
-      <svg viewBox="0 0 640 420" role="img" aria-label="Top-down lighting plot: a lamp outside a window, its beam crossing the room to an actor's mark, a bounce board opposite, a practical lamp in the corner and the camera below">
-        <polygon class="beam" points="44,190 92,138 330,96 330,316 92,244"/>
-        <path class="ln" d="M92 40 H572 V360 H92 V244 M92 138 V40"/>
-        <path class="ln" d="M92 150 H86 M92 191 H86 M92 232 H86"/>
-        <rect class="ln" x="24" y="176" width="22" height="28" transform="rotate(-8 35 190)"/>
-        <circle class="ln" cx="330" cy="206" r="13"/>
-        <path class="ln" d="M476 124 L506 260"/>
-        <circle class="key" cx="530" cy="80" r="6"/>
-        <rect class="ln" x="306" y="328" width="48" height="22"/><path class="ln" d="M320 328 L330 312 L340 328"/>
-        <path class="soft" d="M330 312 V222"/>
-        <g class="lbl"><text x="14" y="160">18K HMI</text><text x="14" y="232">THROUGH</text><text x="14" y="247">WINDOW</text>
-          <text x="518" y="72" text-anchor="end">PRACTICAL · 60W</text><text x="470" y="282" text-anchor="end">4×4 BOUNCE</text>
-          <text x="352" y="210">MARK</text><text x="364" y="344">CAM A · 35MM</text></g>
-        <g class="num"><circle cx="36" cy="140" r="15"/><text x="36" y="140">1</text><circle cx="530" cy="196" r="15"/><text x="530" y="196">2</text>
-          <circle cx="566" cy="80" r="15"/><text x="566" y="80">3</text><circle cx="366" cy="206" r="15"/><text x="366" y="206">4</text>
-          <circle cx="392" cy="339" r="15"/><text x="392" y="339">5</text></g>
-      </svg>
-      <ol class="legend"><li>1 · 18K HMI through the window</li><li>2 · 4×4 bounce</li><li>3 · Practical, 60W tungsten</li><li>4 · Actor's mark</li><li>5 · Camera A, 35mm</li></ol>
-    </figure>
-  </div>
-  <footer class="foot"><span class="meta">Karan&nbsp;Chaudhary&nbsp;· Archive</span><button class="motion" type="button" data-motion><i aria-hidden="true"></i><span>Pause light</span></button><span class="fadeout">FADE OUT.</span></footer>
 </section>
 
 <section class="page tone-light" id="p-about" data-tone="light" aria-label="About">
@@ -2355,13 +2322,13 @@ if(REFS.length){$('#refs').innerHTML=REFS.map(([k,v])=>`<div class="ref"><span c
 if(RECOGNITION.length){$('#recognition').innerHTML=RECOGNITION.map(([y,a,b])=>`<div class="item"><span class="when">${esc(y)}</span><div><h3>${esc(a)}</h3><p>${ty(b||'')}</p></div></div>`).join('');$('#rec-wrap').hidden=false}
 if(PHOTOS.length){$('#book').innerHTML=PHOTOS.map((p,i)=>`<figure class="plate ${p.size||''}"><img src="${esc(p.src)}" alt="${esc(p.cap||'Photograph')}" loading="lazy" decoding="async"><figcaption style="display:flex;justify-content:space-between;gap:12px"><span class="slug">Plate ${two(i+1)}</span><span class="slug">${esc(p.cap||'')}</span></figcaption></figure>`).join('');$$('[data-photos]').forEach(a=>a.hidden=false)}
 const ROLLS=['afternoon','night','stone'];
-$('#sheet').innerHTML=Array.from({length:18},(_,i)=>{const r=Math.floor(i/6);
+const sheetEl=$('#sheet');if(sheetEl)sheetEl.innerHTML=Array.from({length:18},(_,i)=>{const r=Math.floor(i/6);
   return `<div class="cell${[3,8,14].includes(i)?' mark':''}"><div class="frame" data-scene="${ROLLS[r]}" data-seed="${r*3.1+1}" data-static data-t="${(r*40+(i%6)*1.6).toFixed(1)}"></div><span class="n"><span>${two(i+1)}</span><span>${i%6===0?'ROLL '+two(r+1):''}</span></span></div>`}).join('');
 
 const ending=id=>`<section class="endcard" aria-labelledby="${id}-h"><div class="sec"><h2 class="meta" id="${id}-h">Contact</h2><span class="slug">Gurugram, India</span></div>
   <a class="endcard-t" href="#contact" data-go="contact" tabindex="-1">Let’s make <i>something.</i></a>
   <div class="mailrow"><a class="mail" id="${id}" href="mailto:thekaranchaudhary3208@gmail.com" aria-label="thekaranchaudhary3208@gmail.com">thekaranchaudhary3208<wbr>@gmail.com</a><button class="copy" type="button" data-copy="${id}">Copy email</button><a class="open" href="#contact" data-go="contact">All contact details</a></div></section>`;
-['work','archive','about','photographs'].forEach(k=>$('#p-'+k+' > .foot').insertAdjacentHTML('beforebegin',ending(k+'-email')));
+['work','about','photographs'].forEach(k=>$('#p-'+k+' > .foot').insertAdjacentHTML('beforebegin',ending(k+'-email')));
 const note=(label,arr,c)=>`<div class="note${c?' '+c:''}"><h2 class="meta">${label}</h2><div>${arr.map(t=>`<p>${ty(t)}</p>`).join('')}</div></div>`;
 const excerptOnly=p=>Media.has(p.id,'excerpt');
 function projectPage(p,still){
@@ -2405,7 +2372,7 @@ function projectPage(p,still){
   ${ending('film-email')}
   ${foot(ty('Karan Chaudhary · '+p.title))}`}
 
-const PAGES=['home','work','photographs','archive','about','contact'];
+const PAGES=['home','work','photographs','about','contact'];
 const slate=$('#slate'),slateTxt=$('#slate-txt'),navEl=$('#nav'),mainEl=$('#main');
 const sheetMenu=$('#sheet-menu'),menuBtn=$('#menu-btn');
 const pos={},from={},FOC='a[href],button,[tabindex]';let current=null,navToken=0;
