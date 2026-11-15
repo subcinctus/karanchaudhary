@@ -607,6 +607,9 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
 .tool input{font-family:var(--mono);font-size:17px}
 .tool select{font-family:var(--ui);font-size:14px;color:var(--dim);background:var(--bg)}
 .tool-btn{font-family:var(--ui);font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;margin-top:10px}
+
+.tool select{padding-right:32px;background-image:linear-gradient(45deg,transparent 50%,var(--dim) 50%),linear-gradient(135deg,var(--dim) 50%,transparent 50%);background-position:calc(100% - 18px) 20px,calc(100% - 13px) 20px;background-size:5px 5px;background-repeat:no-repeat}
+.tool select.tf-unit{flex:none;width:auto;min-width:7em;color:var(--fg)}
 .tool-btn:hover{border-color:var(--fg)}
 .tool input:focus-visible,.tool select:focus-visible,.tool-btn:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
 .tool .unit{flex:none;font-family:var(--ui);font-size:13px;color:var(--dim);min-width:3.4em}
@@ -619,6 +622,7 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
 .tool-big.ok{color:var(--accent)}
 .tool-line{margin:0;font-family:var(--ui);font-size:15px;line-height:1.5}
 .tool-line:empty{display:none}
+.tool-warn{margin-top:8px;color:var(--tungsten)}
 .tool-formula{margin:10px 0 0;font-family:var(--mono);font-size:12.5px;line-height:1.55;color:var(--dim);overflow-wrap:anywhere}
 .tool-sub{display:block;margin-top:26px}
 .tool-list{list-style:none;margin:12px 0 0;padding:0;font-family:var(--mono);font-size:14.5px}
@@ -2392,7 +2396,21 @@ function calcCards(i){
   out.perCopy=up(out.gbCopy,out.usable);out.buy=out.perCopy*v.copies;out.spare=out.usable-out.gbCopy/out.perCopy;
   return out}
 
-const api={calcFlicker,calcEighths,calcCards};
+function calcSound(inp){
+  const d=inp.dist,unit=inp.unit,fps=inp.fps,t=inp.temp;
+  if(!(Number.isFinite(d)&&d>=0&&Number.isFinite(fps)&&fps>=1&&fps<=1000&&Number.isFinite(t)&&t>=-60&&t<=60))return{ok:false};
+  const metres=unit==='ft'?d*.3048:d,c=331.3*Math.sqrt(1+t/273.15),sec=metres/c,frames=sec*fps,perFrame=c/fps;
+  return{ok:true,metres,c,sec,ms:sec*1000,frames,slip:Math.round(Math.round(frames*100)/100),perFrame:unit==='ft'?perFrame/.3048:perFrame}}
+
+function calcPlayback(inp){
+  const cam=inp.cam,proj=inp.proj,min=inp.min,sec=inp.sec,bpm=inp.bpm,okRate=x=>Number.isFinite(x)&&x>=1&&x<=1000;
+  if(!okRate(cam)||!okRate(proj))return{ok:false,why:'rate'};
+  if(!(Number.isFinite(min)&&Number.isFinite(sec)&&min>=0&&sec>=0))return{ok:false,why:'length'};
+  const total=min*60+sec;if(total<=0||total>86400)return{ok:false,why:'length'};
+  const ratio=cam/proj;
+  return{ok:true,total,speed:ratio*100,onSet:total*proj/cam,semis:12*Math.log2(ratio),bpm:Number.isFinite(bpm)&&bpm>0?bpm*ratio:null}}
+
+const api={calcFlicker,calcEighths,calcCards,calcSound,calcPlayback};
 if(typeof window!=='undefined')window.Tools=api;
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 if(!root)return;
@@ -2451,6 +2469,36 @@ root.innerHTML=`
     <p class="tool-formula" data-o="formula"></p>
     <p class="tool-note">Estimates only. A drive holds a little less than its label says, and a verified copy takes longer than a plain one.</p>
   </div>
+</article>
+<article class="tool" id="tool-sound" aria-labelledby="tool-sound-h">
+  ${head('04','Sound','tool-sound','Sound delay in frames','How many frames late the sound reaches the microphone when the microphone is far from the source.')}
+  <div class="tool-in">
+    <label class="tf"><span class="meta">Distance, sound source to microphone</span><span class="tf-row"><input data-k="dist" type="number" inputmode="decimal" step="any" value="40" aria-label="Distance from the sound source to the microphone"><select data-k="unit" class="tf-unit" aria-label="Distance unit"><option value="m">metres</option><option value="ft">feet</option></select></span><span class="hint">Measure from the thing making the sound to the microphone.</span></label>
+    ${field('fps','Frame rate','fps',24,'',`<span class="tf-row"><select data-k="pick" aria-label="Quick pick a frame rate"><option value="">Quick pick</option>${[23.976,24,25,30,48,50,60].map(v=>`<option>${v}</option>`).join('')}</select></span>`)}
+    ${field('temp','Air temperature','°C',25,'Changes the speed of sound only a little.')}
+  </div>
+  <div class="tool-out" aria-live="polite">
+    <span class="meta">Answer</span><p class="tool-big" data-o="verdict">${DASH}</p><p class="tool-line" data-o="line"></p>
+    <ul class="tool-list">${[['ms','Delay in milliseconds'],['frames','Delay in frames'],['slip','Slip the audio earlier by'],['per','Distance that costs one frame']].map(([k,l])=>`<li><span>${l}</span><span data-o="${k}">${DASH}</span></li>`).join('')}</ul>
+    <p class="tool-formula" data-o="formula"></p>
+    <p class="tool-note">The slip is rounded to a whole frame; an editor can slip by part of a frame for an exact match. If you synced by a clap recorded at the same distance, the delay is already built in: use this for timecode sync, or when sources sit at different distances. Straight-line air path only. Wind, echo and room reflections are ignored.</p>
+  </div>
+</article>
+<article class="tool" id="tool-playback" aria-labelledby="tool-playback-h">
+  ${head('05','Playback','tool-playback','Song playback speed','For a song shot at one frame rate and cut at another: the speed the playback desk runs the track at.')}
+  <div class="tool-in">
+    ${field('cam','Camera frame rate','fps',48,'Type the exact rate the camera runs at. On a 23.976 project, 47.952 and 48 are different.')}
+    ${field('proj','Project frame rate','fps',24,'The rate the edit plays at. Type 23.976 or 24, exactly as your project uses.')}
+    <div class="tf"><span class="meta">Track length</span>
+      <div class="te-row"><input data-k="min" type="number" inputmode="numeric" min="0" step="1" value="3" aria-label="Track length, minutes"><span class="unit">min</span><input data-k="sec" type="number" inputmode="decimal" min="0" step="any" value="30" aria-label="Track length, seconds"><span class="unit">s</span></div></div>
+    ${field('bpm','Track tempo, optional','BPM',100,'Leave empty to skip the tempo line.')}
+  </div>
+  <div class="tool-out" aria-live="polite">
+    <span class="meta">Answer</span><p class="tool-big" data-o="verdict">${DASH}</p><p class="tool-line" data-o="line"></p><p class="tool-line tool-warn" data-o="warn"></p>
+    <ul class="tool-list">${[['onset','Track length on set'],['pitch','Pitch, if not corrected'],['tempo','Tempo on set']].map(([k,l])=>`<li><span>${l}</span><span data-o="${k}">${DASH}</span></li>`).join('')}</ul>
+    <p class="tool-formula" data-o="formula"></p>
+    <p class="tool-note">Pitch only changes if the playback is not pitch-corrected. The edit always runs at the project rate. Check the sound with the playback operator.</p>
+  </div>
 </article>`;
 
 const f1=x=>String(Math.round(x*10)/10);
@@ -2470,7 +2518,7 @@ const wire=(id,paint)=>{const el=D.getElementById(id),o=k=>el.querySelector('[da
   if(t.isSafe)N.textContent='Shutter speed 1/'+f1(t.denom)+' s. Flicker-free under these lights.';
   else{const s=Math.abs(t.stops).toFixed(2),w=s==='1.00'?'stop':'stops';
     N.textContent='Nearest safe: '+f1(t.nearest.angle)+'° (1/'+f1(t.nearest.denom)+' s), '+(s==='0.00'?'no change in exposure':t.stops>0?'costs '+s+' '+w+' of light':'adds '+s+' '+w+' of light')+'.'}});
- T.v('pick').addEventListener('change',e=>{if(e.target.value){T.v('fps').value=e.target.value;T.run()}});T.run()}
+ T.v('pick').addEventListener('change',e=>{if(e.target.value){T.v('fps').value=e.target.value;e.target.value='';T.run()}});T.run()}
 
 {const T=wire('tool-eighths',(el,o,v)=>{
   const rows=[...o('scenes').querySelectorAll('.te-row')].map(r=>{const i=r.querySelectorAll('input');return{w:i[0].value,e:i[1].value}});
@@ -2491,6 +2539,40 @@ const wire=(id,paint)=>{const el=D.getElementById(id),o=k=>el.querySelector('[da
   o('tbc').textContent=n(r.tbCopy,2,'TB');o('tba').textContent=n(r.tbAll,2,'TB');o('dpc').textContent=n(r.perCopy,0);o('spare').textContent=n(r.spare,0,'GB');o('off').textContent=ms(r.offloadSec);
   o('formula').textContent=r.ok?i.bitrate+' Mb/s × 0.45 = '+n(r.gbHour,1)+' GB an hour. '+n(r.gbDay,1)+' GB a day × '+i.days+' days = '+n(r.gbCopy,0)+' GB a copy. '+n(r.usable,0)+' GB usable per drive: '+r.perCopy+' per copy × '+i.copies+' copies = '+r.buy+' drives.'
     :'Fill in every box with a number above zero to see the answer.'}).run()}
+
+{const x1=x=>(Math.round(x*10)/10).toFixed(1);
+ const T=wire('tool-sound',(el,o,v)=>{
+  const unit=v('unit').value,r=calcSound({dist:parseFloat(v('dist').value),unit,fps:parseFloat(v('fps').value),temp:parseFloat(v('temp').value)}),V=o('verdict');
+  V.className='tool-big';
+  if(!r.ok){V.textContent=DASH;o('line').textContent='';['ms','frames','slip','per'].forEach(k=>{o(k).textContent=DASH});
+    o('formula').textContent='Enter a distance, a frame rate from 1 to 1000, and a temperature from -60 to 60.';return}
+  const fr=r.frames.toFixed(2);
+  V.classList.add('ok');V.textContent=r.slip===0?'No slip needed':'Slip the sound about '+r.slip+(r.slip===1?' frame':' frames')+' earlier';
+  o('line').textContent='The sound takes '+x1(r.ms)+' ms to reach the microphone. That is '+fr+' frames'+(r.slip===0?', under half a frame.':', rounded to '+r.slip+'.');
+  o('ms').textContent=x1(r.ms)+' ms';o('frames').textContent=fr;o('slip').textContent=r.slip+(r.slip===1?' frame':' frames');o('per').textContent=x1(r.perFrame)+(unit==='ft'?' ft':' m');
+  const dist=v('dist').value,m=unit==='ft'?dist+' ft = '+r.metres.toFixed(2)+' m':dist+' m';
+  const tv=v('temp').value.trim(),tt=parseFloat(tv)<0?'('+tv+')':tv;
+  o('formula').textContent='Speed = 331.3 × √(1 + '+tt+' ÷ 273.15) = '+r.c.toFixed(1)+' m/s. Delay = '+m+' ÷ '+r.c.toFixed(1)+' = '+r.sec.toFixed(4)+' s. Frames = '+r.sec.toFixed(4)+' × '+v('fps').value+' = '+fr+'.'});
+ T.v('pick').addEventListener('change',e=>{if(e.target.value){T.v('fps').value=e.target.value;e.target.value='';T.run()}});
+ T.v('unit').addEventListener('change',T.run);T.run()}
+
+{const len=s=>{const t=Math.round(s*10),m=Math.floor(t/600),r=(t-m*600)/10;return m>0?m+' min '+f1(r)+' s':f1(r)+' s'};
+ wire('tool-playback',(el,o,v)=>{
+  const g=k=>parseFloat(v(k).value),z=k=>v(k).value.trim()===''?0:g(k),f2=x=>String(Math.round(x*100)/100);
+  const ntsc=x=>{const w=x*1.001;return Math.abs(x-Math.round(x))>.001&&Math.abs(w-Math.round(w))<.002};
+  const r=calcPlayback({cam:g('cam'),proj:g('proj'),min:z('min'),sec:z('sec'),bpm:g('bpm')}),V=o('verdict');
+  V.className='tool-big';o('warn').textContent='';
+  if(!r.ok){V.textContent=DASH;o('line').textContent='';['onset','pitch','tempo'].forEach(k=>{o(k).textContent=DASH});
+    o('formula').textContent=r.why==='rate'?'Enter a camera and a project frame rate, from 1 to 1000.':'Enter a track length in minutes and seconds.';return}
+  const cam=v('cam').value,proj=v('proj').value;
+  V.classList.add('ok');V.textContent='Play at '+f2(r.speed)+'%';
+  if(ntsc(g('cam'))!==ntsc(g('proj')))o('warn').textContent='Check the rates: one is a 23.976-style rate and the other is a whole number.';
+  o('line').textContent='The '+len(r.total)+' track takes '+len(r.onSet)+' on set.';
+  o('onset').textContent=len(r.onSet);
+  o('pitch').textContent=Math.abs(r.semis)<.05?'none':f1(Math.abs(r.semis))+(f1(Math.abs(r.semis))==='1'?' semitone ':' semitones ')+(r.semis>0?'up':'down');
+  o('tempo').textContent=r.bpm===null?DASH:f1(r.bpm)+' BPM';
+  o('formula').textContent='Speed = '+cam+' ÷ '+proj+' × 100 = '+f2(r.speed)+'%. On set = '+f1(r.total)+' s × '+proj+' ÷ '+cam+' = '+f1(r.onSet)+' s. Pitch = 12 × log2('+cam+' ÷ '+proj+') = '+f1(r.semis)+' semitones.'
+    +(r.bpm===null?'':' Tempo = '+v('bpm').value+' × '+cam+' ÷ '+proj+' = '+f1(r.bpm)+' BPM.')}).run()}
 })();
 
 (()=>{
