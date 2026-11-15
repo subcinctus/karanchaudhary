@@ -79,11 +79,11 @@ h2.meta,h3.meta{margin:0}
 
 
 .sheet-menu{position:fixed;inset:0;z-index:70;background:var(--night);color:var(--ivory);display:flex;flex-direction:column;justify-content:space-between;
-  padding:env(safe-area-inset-top,0px) var(--mr) calc(env(safe-area-inset-bottom,0px) + 28px) var(--m)}
+  padding:env(safe-area-inset-top,0px) var(--mr) calc(env(safe-area-inset-bottom,0px) + 28px) var(--m);overflow-y:auto;overscroll-behavior:contain}
 .sheet-menu .top{display:flex;justify-content:space-between;align-items:center;min-height:var(--navh)}
 .sheet-menu .top button{background:none;border:0;padding:14px 0 14px 16px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;color:inherit}
 .sheet-menu nav{display:grid;gap:4px}
-.sheet-menu nav a{font-family:var(--display);font-size:clamp(46px,13vw,72px);line-height:1.04;padding-block:2px}
+.sheet-menu nav a{font-family:var(--display);font-size:clamp(46px,13vw,72px);font-size:clamp(30px,min(13vw,9svh),72px);line-height:1.04;padding-block:2px}
 .sheet-menu nav a[aria-current="page"]{font-style:italic}
 .sheet-menu .bottom{display:flex;justify-content:space-between;align-items:center;gap:16px}
 
@@ -271,7 +271,7 @@ html.hj .hinge .l4{left:var(--m);right:var(--mr);bottom:clamp(30px,7svh,72px);op
 .mailrow{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
 .mail{font-family:var(--display);font-size:var(--fs-s);line-height:1.15;border-bottom:1px solid var(--line);padding-bottom:4px;transition:border-color .2s var(--ease-state)}
 .mail:hover{border-color:currentColor}
-.copy{min-height:44px;background:none;border:1px solid var(--line);padding:0 16px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:border-color .2s var(--ease-state)}
+.copy{min-height:44px;background:none;border:1px solid var(--dim);padding:0 16px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:border-color .2s var(--ease-state)}
 .copy:hover{border-color:var(--fg)}
 .copy:active{transform:scale(.97)}
 .foot{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;border-top:1px solid var(--line);padding-block:14px 40px;margin-top:var(--sp-section)}
@@ -374,25 +374,6 @@ a.row:hover .t,a.row:focus-visible .t{transform:translateX(8px)}
 .next h3{font-family:var(--display);font-weight:400;font-size:var(--fs-l);line-height:.9;letter-spacing:-.018em;margin:-.5em 0 0;padding-left:.05em;position:relative;z-index:2;pointer-events:none;text-shadow:0 2px 40px rgba(0,0,0,.35)}
 
 
-.contact-sheet{background:#050505;padding:clamp(14px,2.6vw,34px);display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(10px,1.2vw,16px);margin-top:clamp(36px,5vw,64px)}
-.cell{display:grid;gap:7px;position:relative}
-.cell .frame{aspect-ratio:3/2}
-.cell .n{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:#8E897F}
-.cell.mark::after{content:"";position:absolute;inset:-6px -6px 16px;border:1.6px solid var(--petrol-lift);border-radius:47% 53% 50% 50%/55% 45% 55% 45%;transform:rotate(-2.2deg);pointer-events:none;opacity:.9}
-.plot{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gut);row-gap:24px;align-items:start}
-.plot>p{grid-column:1/5}
-.plot>figure{grid-column:6/-1;margin:0}
-.plot svg{width:100%;height:auto;display:block;max-width:100%}
-.plot svg .ln{fill:none;stroke:var(--fg);stroke-width:1.2}
-.plot svg .soft{fill:none;stroke:var(--dim);stroke-width:1;stroke-dasharray:3 5}
-.plot svg .beam{fill:var(--tungsten);opacity:.16}
-.plot svg text{font-family:var(--mono);font-size:12px;fill:var(--dim)}
-.plot svg .key{fill:var(--tungsten)}
-.plot svg .num{display:none}
-.plot svg .num circle{fill:var(--night);stroke:var(--dim)}
-.plot svg .num text{font-size:20px;fill:var(--fg);text-anchor:middle;dominant-baseline:central}
-.legend{display:none;margin:16px 0 0;padding:0;list-style:none;font-family:var(--mono);font-size:13px;color:var(--dim);gap:6px}
-
 
 .about{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gut);row-gap:40px;align-items:start;margin-top:clamp(44px,6vw,90px)}
 .about .portrait{grid-column:1/6;position:sticky;top:calc(var(--navh) + 24px);margin:0;display:grid;gap:12px}
@@ -425,7 +406,7 @@ a.row:hover .t,a.row:focus-visible .t{transform:translateX(8px)}
 .preview.on{opacity:1;scale:1}
 
 
-.hero .cred,.row2>p,.now p,.tl p,.note p,.bio p,.big-text,.plot>p,.hinge .q p{text-wrap:pretty}
+.hero .cred,.row2>p,.now p,.tl p,.note p,.bio p,.big-text,.hinge .q p{text-wrap:pretty}
 
 .credits dd,.foot>.meta,.hinge .card .slug,.quote,.endcard-t,.row .r,.tl .who,.pp-line,.page p.slug{text-wrap:balance}
 .tl .when,.now>.slug{white-space:nowrap}
@@ -435,7 +416,7 @@ a.row:hover .t,a.row:focus-visible .t{transform:translateX(8px)}
   .links{display:none}.menu-btn{display:block}
   .reel .shot,.reel h3,.reel .row2{grid-column:1/-1!important}
   .row2{grid-template-columns:minmax(0,1fr)}.row2>*{grid-column:1/-1!important}.row2>.open{justify-self:start}
-  .now>.slug,.now>div,.training>.meta,.training>div,.fgroup>h3,.fgroup>.rows,.tl .when,.tl .item>div,.note>h2,.note>div,.plot>p,.plot>figure,
+  .now>.slug,.now>div,.training>.meta,.training>div,.fgroup>h3,.fgroup>.rows,.tl .when,.tl .item>div,.note>h2,.note>div,
   .about .portrait,.about .bio-col,.clist,.closing,.plate,.contact-big{grid-column:1/-1!important;grid-row:auto!important}
   .tl .when{padding-top:0;margin-bottom:6px}
   .row{grid-template-columns:5.5em minmax(0,1fr)}.row .t,.row .r{grid-column:2}
@@ -443,7 +424,6 @@ a.row:hover .t,a.row:focus-visible .t{transform:translateX(8px)}
   .credits div{grid-column:span 6}
   .notes{grid-template-columns:minmax(0,1fr)}
   .studies .g2,.studies .g3{grid-column:1/-1}.studies .g2 .frame{aspect-ratio:16/9;height:auto;min-height:0}.studies .g3 .frame{aspect-ratio:4/5;height:auto;min-height:0}
-  .contact-sheet{grid-template-columns:repeat(3,minmax(0,1fr))}
   .clist div{grid-template-columns:minmax(0,1fr);gap:8px}
   .clist dd{flex-direction:column;align-items:flex-start;gap:12px}
   .about .portrait{position:static}.about .portrait .frame{aspect-ratio:3/2}
@@ -452,7 +432,6 @@ a.row:hover .t,a.row:focus-visible .t{transform:translateX(8px)}
   .hero h1 .ln+.ln{padding-left:.3em}
   .foot{grid-template-columns:1fr auto}.foot>:nth-child(2){grid-column:1/-1;grid-row:2;justify-self:start}
   .preview,.chip{display:none}
-  .plot svg .lbl{display:none}.plot svg .num{display:inline}.legend{display:grid}
   .hinge .stage{--ww:calc(100vw - var(--m) - var(--mr));--wh:calc(var(--ww) / 1.85);--wy:44%}
   html.hj .hinge{height:300svh}
 }
@@ -463,7 +442,7 @@ a.row:hover .t,a.row:focus-visible .t{transform:translateX(8px)}
   .coda{padding-block:72px 80px}
   .finale{padding-top:32px}
   .fin-loc{top:22px}
-  .sec{flex-wrap:wrap;row-gap:6px}.sec>*{white-space:nowrap}
+  .sec{flex-wrap:wrap;row-gap:6px}.sec>*{white-space:nowrap}.sec>.slug{white-space:normal;text-wrap:balance}
   .hero .top{flex-direction:column;gap:6px}
   .hero #tc{position:absolute;top:calc(var(--navh) + 16px);right:var(--mr)}
   .hero .tc{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;width:100%}
@@ -600,12 +579,13 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
 .tool-h p{margin:0;font-family:var(--text);font-weight:300;font-size:var(--fs-body);line-height:1.5;color:var(--dim);max-width:24em;text-wrap:pretty}
 .tool-in{grid-column:5/9;display:grid;gap:20px;align-content:start}
 .tool-in.two{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gut)}
+@media (min-width:421px){.tool-in.two .tf>.meta{display:flex;align-items:flex-end;min-height:3.1em}}
 .tool-out{grid-column:9/-1}
 .tf{display:block;min-width:0}
 .tf-row{display:flex;align-items:center;gap:10px;margin-top:8px}
-.tool input,.tool select,.tool-btn{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:0;height:46px;padding:0 12px;min-width:0;width:100%;-webkit-appearance:none;appearance:none}
+.tool input,.tool select,.tool-btn{font:inherit;color:var(--fg);background:transparent;border:1px solid #66625A;border-radius:0;height:46px;padding:0 12px;min-width:0;width:100%;-webkit-appearance:none;appearance:none}
 .tool input{font-family:var(--mono);font-size:17px}
-.tool select{font-family:var(--ui);font-size:14px;color:var(--dim);background:var(--bg)}
+.tool select{font-family:var(--ui);font-size:16px;color:var(--dim);background:var(--bg)}
 .tool-btn{font-family:var(--ui);font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;margin-top:10px}
 
 .tool select{padding-right:32px;background-image:linear-gradient(45deg,transparent 50%,var(--dim) 50%),linear-gradient(135deg,var(--dim) 50%,transparent 50%);background-position:calc(100% - 18px) 20px,calc(100% - 13px) 20px;background-size:5px 5px;background-repeat:no-repeat}
@@ -634,6 +614,12 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
 @media (max-width:1100px){.tool-h{grid-column:1/-1}.tool-in{grid-column:1/7}.tool-out{grid-column:7/-1}}
 @media (max-width:700px){.tool-in,.tool-out{grid-column:1/-1}.tool-in.two{grid-template-columns:repeat(2,minmax(0,1fr))}.tool{row-gap:26px}}
 @media (max-width:420px){.tool-in.two{grid-template-columns:minmax(0,1fr)}}
+
+
+.th-out{position:absolute;left:0;right:0;bottom:max(26px,env(safe-area-inset-bottom,0px) + 14px);margin:0;text-align:center;z-index:6}
+.th-out .open{color:var(--ivory)}
+#stage{cursor:pointer}
+.now-2{margin-top:clamp(26px,3vw,40px)}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -642,7 +628,6 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
   <a class="brand" href="#home" data-go="home">Karan Chaudhary</a>
   <nav class="links" aria-label="Main">
     <a href="#work" data-go="work">Work</a>
-    <a href="#photographs" data-go="photographs" data-photos hidden>Photographs</a>
     <a href="#tools" data-go="tools">Tools</a>
     <a href="#about" data-go="about">About</a>
     <a href="#contact" data-go="contact">Contact</a>
@@ -652,7 +637,7 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
 <div class="sheet-menu" id="sheet-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden inert>
   <div class="top"><span class="brand">Karan Chaudhary</span><button type="button" id="menu-close">Close</button></div>
   <nav aria-label="Main menu">
-    <a href="#home" data-go="home">Home</a><a href="#work" data-go="work">Work</a><a href="#photographs" data-go="photographs" data-photos hidden>Photographs</a>
+    <a href="#home" data-go="home">Home</a><a href="#work" data-go="work">Work</a>
     <a href="#tools" data-go="tools">Tools</a><a href="#about" data-go="about">About</a><a href="#contact" data-go="contact">Contact</a>
   </nav>
   <div class="bottom"><span class="slug">Gurugram, India</span><button class="motion" type="button" data-motion><i aria-hidden="true"></i><span>Pause light</span></button></div>
@@ -689,7 +674,7 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
       <p class="slug loc">INT. THE CLASSROOM — LATE AFTERNOON</p>
       <div class="frame" id="hinge-frame" data-pid="the-classroom" data-scene="classroom" data-hero data-gate data-seed="6.8" role="img" aria-label="Light study: late light through classroom blinds, chalk dust in the air"></div>
       <i class="matte m-t"></i><i class="matte m-b"></i><i class="matte m-l"></i><i class="matte m-r"></i><i class="frameline" aria-hidden="true"></i>
-      <div class="card"><h3>The Classroom</h3><span class="slug"><span id="hinge-n">05</span>&nbsp;— Series, four episodes&nbsp;· Co-director, cinematographer, editor&nbsp;· 2018–2020</span><a class="open" href="#the-classroom" data-go="the-classroom">About the film<span class="vh">: The Classroom</span></a></div>
+      <div class="card"><h3>The Classroom</h3><span class="slug"><span id="hinge-n">05</span>&nbsp;— Series, four episodes&nbsp;· Co-director, cinematographer, editor&nbsp;· 2018–2020</span><a class="open" href="#the-classroom" data-go="the-classroom">About the series<span class="vh">: The Classroom</span></a></div>
       <div class="scrim"></div>
       <p class="l4">Now I want to learn <i>producing.</i></p>
       <div class="bloom"></div><div class="flood"></div>
@@ -702,11 +687,12 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
       <p class="quote">I got more interested in how a whole film gets made, not only how it is shot. Now I want to make <i>films of my own,</i> with my style and my name on them, because I trust my own taste.</p>
     </div>
     <div class="sec"><h2 class="meta">Now</h2><span class="slug">Camera team</span></div>
-    <div class="now"><span class="slug">2025–now</span><div><h3>Camera department</h3><span class="meta">Camera assistant&nbsp;· a project under producer Boney&nbsp;Kapoor</span></div></div>
+    <div class="now"><span class="slug">2026–now</span><div><h3>King</h3><span class="meta">Camera assistant&nbsp;· feature film, Pen&nbsp;Films</span></div></div>
+    <div class="now now-2"><span class="slug">2025–now</span><div><h3>A project under producer Boney&nbsp;Kapoor</h3><span class="meta">Camera assistant</span></div></div>
     <div class="sec"><h2 class="meta">Off camera</h2><span class="slug">Direction&nbsp;· planning&nbsp;· media</span></div>
     <div class="films" id="offcam" style="margin-top:0"></div>
     <div class="sec"><h2 class="meta">Training</h2><span class="slug">From&nbsp;2019</span></div>
-    <div class="training"><span class="meta">Photography, then film</span><div><p class="big-text">Studio photography under Nitin&nbsp;Rai at the Raghu&nbsp;Rai Center for Photography, 2019 to 2020. Trained in cinematography and direction at Whistling&nbsp;Woods International, Mumbai (B.Sc., Tata Institute of Social Sciences).</p><p style="margin:28px 0 0"><a class="open" href="#about" data-go="about">About Karan</a></p></div></div>
+    <div class="training"><span class="meta">Photography, then film</span><div><p class="big-text">Studio photography under Nitin&nbsp;Rai at the Raghu&nbsp;Rai Center for Photography, 2019 to 2020. Trained in cinematography and direction at Whistling&nbsp;Woods International, Mumbai (B.Sc. awarded by the Tata Institute of Social Sciences).</p><p style="margin:28px 0 0"><a class="open" href="#about" data-go="about">About Karan</a></p></div></div>
     <section class="coda" aria-label="Where this is going"><p class="ln">Heading toward producing,</p><p class="ln">and one day <i>a small studio of my own in India.</i></p></section>
   </div>
 
@@ -734,13 +720,6 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
 
 <section class="page tone-dark" id="p-project" data-tone="dark" aria-label="Film"></section>
 
-<section class="page tone-light" id="p-photographs" data-tone="light" aria-label="Photographs">
-  <h1 class="ptitle" tabindex="-1"><span class="ln"><span>Photographs</span></span></h1>
-  <div class="lede rise"><h2 class="meta">Plates</h2><span class="slug">Studio&nbsp;· people&nbsp;· places</span></div>
-  <div class="book" id="book"></div>
-  <footer class="foot"><span class="meta">Karan&nbsp;Chaudhary&nbsp;· Photographs</span><button class="motion" type="button" data-motion><i aria-hidden="true"></i><span>Pause light</span></button><span class="fadeout">FADE OUT.</span></footer>
-</section>
-
 <section class="page tone-dark" id="p-tools" data-tone="dark" aria-label="Tools">
   <h1 class="ptitle" tabindex="-1"><span class="ln"><span>Tools</span></span></h1>
   <div class="lede rise"><h2 class="meta">Small calculators</h2><span class="slug">Free to use&nbsp;· they run on this page</span></div>
@@ -756,7 +735,7 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
     <div class="bio-col rise" style="--i:1">
       <div class="bio">
         <p>I grew up in Gurugram. I studied studio photography under Nitin&nbsp;Rai, and at school I made a series called The Classroom with friends. I co-directed, shot and edited it.</p>
-        <p>I trained in cinematography and direction at Whistling&nbsp;Woods International in Mumbai. Alongside and after my degree I shot short and independent films, worked with the direction team on a commercial campaign, and now work as a camera assistant.</p>
+        <p>I trained in cinematography and direction at Whistling&nbsp;Woods International in Mumbai. Alongside my degree I shot short and independent films, worked with the direction team on a commercial campaign, and now work as a camera assistant.</p>
         <p>Over time I got more interested in how a whole film gets made, not only how it is shot. That is where I am heading, toward producing, and one day a small studio of my own in India.</p>
       </div>
       <dl class="notes" id="notes"></dl>
@@ -771,7 +750,7 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
   <div class="contact-grid">
     <h1 class="contact-big" tabindex="-1"><span class="ln"><span>Let’s make</span></span><span class="ln"><span><i>something.</i></span></span></h1>
     <dl class="clist rise">
-      <div><dt class="meta">Email</dt><dd><a class="v" id="c-email" href="mailto:thekaranchaudhary3208@gmail.com" aria-label="thekaranchaudhary3208@gmail.com">thekaranchaudhary3208<wbr>@gmail.com</a><button class="copy" type="button" data-copy="c-email" aria-label="Copy email address">Copy</button></dd></div>
+      <div><dt class="meta">Email</dt><dd><a class="v" id="c-email" href="mailto:thekaranchaudhary3208@gmail.com" aria-label="thekaranchaudhary3208@gmail.com">thekaranchaudhary3208<wbr>@gmail.com</a><button class="copy" type="button" data-copy="c-email" aria-label="Copy email address">Copy email</button></dd></div>
       <div><dt class="meta">Based in</dt><dd><span class="v">Gurugram, India</span></dd></div>
     </dl>
     <figure class="closing rise" style="--i:2"><div class="frame r45" data-scene="afternoon" data-zoom="1.35" data-seed="3" data-t="140" role="img" aria-label="Light study: the same room, later"></div><figcaption class="slug">INT. THE SAME ROOM — LATER</figcaption></figure>
@@ -789,76 +768,76 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
 window.KC_ENV="pages";
 const SHOWREEL={title:"Showreel",media:{film:"",poster:"",ratio:"16/9",fps:25,runtime:""}};
 const PROJECTS=[
- {id:"the-tower",title:"The Tower",type:"Short film",role:"Director of photography",year:"",runtime:"15 min",director:"Shoubhit Datta",prod:"",scene:"night",watch:"",
-  line:"",study:[],about:[],approach:[],
+ {id:"the-tower",title:"The Tower",type:"Short film",role:"Director of photography",year:"2024",runtime:"15 min",director:"Shoubhit Datta",prod:"",scene:"night",watch:"",
+  line:"A short film written and directed by Shoubhit Datta at Whistling Woods. I was the director of photography.",study:[],about:[],approach:[],
   media:{film:"media/the-tower/the-tower.mp4",
          partsHQ:{dir:"media/the-tower/hq/",mime:"video/mp4; codecs=\"avc1.640028, mp4a.40.2\"",total:898.8,label:"ONE QUALITY",segs:[[-0.08,21.4],[21.32,20.16],[41.48,20.0],[61.48,19.36],[80.84,20.0],[100.84,20.0],[120.84,19.32],[140.16,20.64],[160.8,20.56],[181.36,19.76],[201.12,19.8],[220.92,19.32],[240.24,20.16],[260.4,20.96],[281.36,19.24],[300.6,20.4],[321.0,19.48],[340.48,19.76],[360.24,21.04],[381.28,19.52],[400.8,19.72],[420.52,21.08],[441.6,18.72],[460.32,21.16],[481.48,18.68],[500.16,20.72],[520.88,20.76],[541.64,20.0],[561.64,20.0],[581.64,19.36],[601.0,20.0],[621.0,19.52],[640.52,20.0],[660.52,19.8],[680.32,21.12],[701.44,19.12],[720.56,20.72],[741.28,19.16],[760.44,21.44],[781.88,19.96],[801.84,18.44],[820.28,21.16],[841.44,20.0],[861.44,20.0],[881.44,17.36]]},
          parts:{dir:"media/the-tower/full/",mime:"video/mp4; codecs=\"hvc1.1.6.L93.90, mp4a.40.2\"",total:898.8,label:"FULL FILM · 720P PREVIEW",segs:[[-0.08,20.0],[19.92,20.0],[39.92,20.0],[59.92,20.0],[79.92,20.0],[99.92,20.0],[119.92,20.0],[139.92,20.0],[159.92,20.0],[179.92,20.0],[199.92,20.0],[219.92,20.0],[239.92,20.0],[259.92,20.0],[279.92,20.0],[299.92,20.0],[319.92,20.0],[339.92,20.0],[359.92,20.0],[379.92,20.0],[399.92,20.0],[419.92,20.0],[439.92,20.0],[459.92,20.0],[479.92,20.0],[499.92,20.0],[519.92,20.0],[539.92,20.0],[559.92,20.0],[579.92,20.0],[599.92,20.0],[619.92,20.0],[639.92,20.0],[659.92,20.0],[679.92,20.0],[699.92,20.0],[719.92,20.0],[739.92,20.0],[759.92,20.0],[779.92,20.0],[799.92,20.0],[819.92,20.0],[839.92,20.0],[859.92,20.0],[879.92,18.88]]},artifactFilm:"media/the-tower/the-tower-artifact.mp4",loop:"media/the-tower/the-tower-loop.mp4",poster:"media/the-tower/the-tower-poster.jpg",
          strip:{src:"media/the-tower/the-tower-strip.jpg",cols:10,rows:6,n:60},ratio:"1920/816",fps:25,dur:898.88}},
- {id:"amrita",title:"Amrita",type:"Short film, rough cut",role:"Associate director of photography",year:"",runtime:"12 min",director:"",prod:"",scene:"afternoon",watch:"",
-  line:"",study:[],about:[],approach:[],
+ {id:"amrita",title:"Amrita",type:"Short film, rough cut",role:"Associate director of photography",year:"2025",runtime:"12 min",director:"",prod:"",scene:"afternoon",watch:"",
+  line:"A short film made at Whistling Woods, shown here as a rough cut. I was the associate director of photography.",study:[],about:[],approach:[],
   media:{film:"media/amrita/amrita.mp4",
          partsHQ:{dir:"media/amrita/hq/",mime:"video/mp4; codecs=\"avc1.640028, mp4a.40.2\"",total:736.2,label:"ONE QUALITY",segs:[[-0.08,20.0],[19.92,20.0],[39.92,20.0],[59.92,20.0],[79.92,20.0],[99.92,20.0],[119.92,20.0],[139.92,20.0],[159.92,20.0],[179.92,20.0],[199.92,20.0],[219.92,20.0],[239.92,20.0],[259.92,20.0],[279.92,20.0],[299.92,20.0],[319.92,20.0],[339.92,20.0],[359.92,20.0],[379.92,20.0],[399.92,20.0],[419.92,20.0],[439.92,20.0],[459.92,20.0],[479.92,20.0],[499.92,20.0],[519.92,20.0],[539.92,20.0],[559.92,20.0],[579.92,20.0],[599.92,20.0],[619.92,20.0],[639.92,20.0],[659.92,20.0],[679.92,20.0],[699.92,20.0],[719.92,16.28]]},
          parts:{dir:"media/amrita/full/",mime:"video/mp4; codecs=\"hvc1.1.6.L93.90, mp4a.40.2\"",total:736.2,label:"FULL FILM · 720P PREVIEW",segs:[[-0.08,20.0],[19.92,20.0],[39.92,20.0],[59.92,20.0],[79.92,20.0],[99.92,20.0],[119.92,20.0],[139.92,20.0],[159.92,20.0],[179.92,20.0],[199.92,20.0],[219.92,20.0],[239.92,20.0],[259.92,20.0],[279.92,20.0],[299.92,20.0],[319.92,20.0],[339.92,20.0],[359.92,20.0],[379.92,20.0],[399.92,20.0],[419.92,20.0],[439.92,20.0],[459.92,20.0],[479.92,20.0],[499.92,20.0],[519.92,20.0],[539.92,20.0],[559.92,20.0],[579.92,20.0],[599.92,20.0],[619.92,20.0],[639.92,20.0],[659.92,20.0],[679.92,20.0],[699.92,20.0],[719.92,16.28]]},artifactFilm:"media/amrita/amrita-artifact.mp4",loop:"media/amrita/amrita-loop.mp4",poster:"media/amrita/amrita-poster.jpg",
          strip:{src:"media/amrita/amrita-strip.jpg",cols:10,rows:6,n:60},ratio:"16/9",fps:25,dur:736.28}},
  {id:"finolex-led",title:"Finolex LED",type:"Commercial, director's cut",role:"Direction team",year:"2024",runtime:"47 sec",director:"",prod:"Early Man Films",scene:"night",watch:"",
-  line:"",study:[],about:[],approach:[],
+  line:"One of three films for Finolex with Early Man Films, shown as the director's cut. I was on the direction team: production sheets, cast references, the pre-production deck and costume trials.",study:[],about:[],approach:[],
   media:{film:"media/finolex-led/finolex-led.mp4",
          partsHQ:{dir:"media/finolex-led/hq/",mime:"video/mp4; codecs=\"avc1.640028, mp4a.40.2\"",total:46.52,label:"ONE QUALITY",segs:[[-0.08,21.12],[21.04,20.84],[41.88,4.64]]},artifactFilm:"media/finolex-led/finolex-led-artifact.mp4",artifactFull:true,loop:"media/finolex-led/finolex-led-loop.mp4",poster:"media/finolex-led/finolex-led-poster.jpg",
          strip:{src:"media/finolex-led/finolex-led-strip.jpg",cols:10,rows:6,n:60},ratio:"2/1",fps:25,dur:46.6}},
- {id:"damakgardh",title:"Damakgardh",type:"Short film, Hindi",role:"Cinematography team",year:"",runtime:"6 min",director:"Isha Singh",prod:"Whistling Woods International",scene:"stone",watch:"",
-  line:"",study:[],about:[],approach:[],
+ {id:"damakgardh",title:"Damakgardh",type:"Short film, Hindi",role:"Cinematography team",year:"2024",runtime:"6 min",director:"Isha Singh",prod:"Whistling Woods International",scene:"stone",watch:"",
+  line:"A Hindi short film directed by Isha Singh, a Whistling Woods student production. I was on the cinematography team.",study:[],about:[],approach:[],
   media:{film:"media/damakgardh/damakgardh.mp4",
          partsHQ:{dir:"media/damakgardh/hq/",mime:"video/mp4; codecs=\"avc1.640028, mp4a.40.2\"",total:380.24,label:"ONE QUALITY",segs:[[-0.08,20.0],[19.92,20.0],[39.92,20.0],[59.92,20.0],[79.92,20.0],[99.92,20.0],[119.92,20.0],[139.92,20.0],[159.92,20.0],[179.92,20.0],[199.92,20.0],[219.92,20.0],[239.92,20.0],[259.92,20.0],[279.92,20.0],[299.92,20.0],[319.92,20.0],[339.92,20.0],[359.92,20.0],[379.92,0.32]]},
          parts:{dir:"media/damakgardh/full/",mime:"video/mp4; codecs=\"hvc1.1.6.L93.90, mp4a.40.2\"",total:380.24,label:"FULL FILM · 720P PREVIEW",segs:[[-0.08,20.0],[19.92,20.0],[39.92,20.0],[59.92,20.0],[79.92,20.0],[99.92,20.0],[119.92,20.0],[139.92,20.0],[159.92,20.0],[179.92,20.0],[199.92,20.0],[219.92,20.0],[239.92,20.0],[259.92,20.0],[279.92,20.0],[299.92,20.0],[319.92,20.0],[339.92,20.0],[359.92,20.0],[379.92,0.32]]},artifactFilm:"media/damakgardh/damakgardh-artifact.mp4",loop:"media/damakgardh/damakgardh-loop.mp4",poster:"media/damakgardh/damakgardh-poster.jpg",
          strip:{src:"media/damakgardh/damakgardh-strip.jpg",cols:10,rows:6,n:60},ratio:"1920/868",fps:25,dur:380.3}},
  {id:"finolex-lock",title:"Finolex Lock",type:"Commercial, director's cut",role:"Direction team",year:"2024",runtime:"51 sec",director:"",prod:"Early Man Films",scene:"petrol",watch:"",
-  line:"",study:[],about:[],approach:[],
+  line:"One of three films for Finolex with Early Man Films, shown as the director's cut. I was on the direction team.",study:[],about:[],approach:[],
   media:{film:"media/finolex-lock/finolex-lock.mp4",
          partsHQ:{dir:"media/finolex-lock/hq/",mime:"video/mp4; codecs=\"avc1.640028, mp4a.40.2\"",total:50.52,label:"ONE QUALITY",segs:[[-0.08,20.0],[19.92,21.16],[41.08,9.44]]},artifactFilm:"media/finolex-lock/finolex-lock-artifact.mp4",artifactFull:true,loop:"media/finolex-lock/finolex-lock-loop.mp4",poster:"media/finolex-lock/finolex-lock-poster.jpg",
          strip:{src:"media/finolex-lock/finolex-lock-strip.jpg",cols:10,rows:6,n:60},ratio:"2/1",fps:25,dur:50.6}},
  {id:"finolex-wire",title:"Finolex Wire",type:"Commercial, director's cut",role:"Direction team",year:"2024",runtime:"58 sec",director:"",prod:"Early Man Films",scene:"afternoon",watch:"",
-  line:"",study:[],about:[],approach:[],
+  line:"One of three films for Finolex with Early Man Films, shown as the director's cut. I was on the direction team.",study:[],about:[],approach:[],
   media:{film:"media/finolex-wire/finolex-wire.mp4",
          partsHQ:{dir:"media/finolex-wire/hq/",mime:"video/mp4; codecs=\"avc1.640028, mp4a.40.2\"",total:58.08,label:"ONE QUALITY",segs:[[-0.08,20.68],[20.6,20.72],[41.32,16.76]]},artifactFilm:"media/finolex-wire/finolex-wire-artifact.mp4",artifactFull:true,loop:"media/finolex-wire/finolex-wire-loop.mp4",poster:"media/finolex-wire/finolex-wire-poster.jpg",
          strip:{src:"media/finolex-wire/finolex-wire-strip.jpg",cols:10,rows:6,n:60},ratio:"2/1",fps:25,dur:58.16}},
- {id:"katputli",title:"Katputli",type:"Short film, Hindi",role:"Director of photography",year:"",runtime:"1 min 40 sec",director:"",prod:"Whistling Woods International",scene:"monsoon",watch:"",
-  line:"",study:[],about:[],approach:[],
+ {id:"katputli",title:"Katputli",type:"Short film, Hindi",role:"Director of photography",year:"2022",runtime:"1 min 40 sec",director:"",prod:"Whistling Woods International",scene:"monsoon",watch:"",
+  line:"My first film as director of photography, and the first film I made after college started.",study:[],about:[],approach:[],
   media:{film:"media/katputli/katputli.mp4",artifactFilm:"media/katputli/katputli-artifact.mp4",artifactFull:true,loop:"media/katputli/katputli-loop.mp4",poster:"media/katputli/katputli-poster.jpg",
          strip:{src:"media/katputli/katputli-strip.jpg",cols:10,rows:6,n:60},ratio:"16/9",fps:29.97,dur:100.47}},
  {id:"khauf",title:"Khauf",type:"Series, Amazon Prime Video",role:"Camera assistant",year:"2023",runtime:"",director:"",prod:"",scene:"petrol",
   watch:"https://www.youtube.com/watch?v=eFZfMm4ltM8",watchLabel:"Watch the trailer on YouTube",playLabel:"Play the trailer",
-  line:"",study:[],about:[],approach:[],
+  line:"A series for Amazon Prime Video. I worked on it as a camera assistant in April 2023. The official trailer plays here.",study:[],about:[],approach:[],
   media:{poster:"https://i.ytimg.com/vi/eFZfMm4ltM8/maxresdefault.jpg",ratio:"16/9"}},
  {id:"the-classroom",title:"The Classroom",type:"Series, four episodes",role:"Co-director, cinematographer, editor",year:"2018–2020",runtime:"",director:"",prod:"Made with friends at Suncity School",scene:"classroom",watch:"https://www.youtube.com/playlist?list=PLLjcaF3ur7ZmYd65-XA-UPcxpriz8HQtf",watchLabel:"Watch the series on YouTube",playLabel:"Play the series",
   line:"A four-episode web series made with friends at school, with a Diwali special, released on YouTube.",
-  study:["Late light through classroom blinds, chalk dust in the air."],
+  study:[],
   about:[],approach:[],
   episodes:[{id:"r10i9bn5318",title:"Episode One: Pilot"},{id:"N01G86ViFqA",title:"Episode Two: Selection Day"},{id:"yCcOttY1Ud0",title:"Fun-day, the Diwali special"},
             {id:"OdnXjkAp_GU",title:"Episode Three: Stream Wars"},{id:"ETRj2UtLtcA",title:"Episode Four: A Christmas of Consequence"}],
   media:{poster:"https://i.ytimg.com/vi/r10i9bn5318/maxresdefault.jpg",ratio:"16/9"}}
 ];
 const FILMO=[
- ["Cinematography",[["","The Tower","Director of photography · short film","the-tower"],["","Katputli","Director of photography · Hindi short film","katputli"],["","Damakgardh","Cinematography team · Hindi short film","damakgardh"],["2021–2024","Independent films","Lead cinematographer",""],["2021–2024","Five larger short films","Assistant cinematographer",""]]],
- ["Camera department",[["2025–now","Project under producer Boney Kapoor","Camera assistant",""],["2023","Khauf","Camera assistant · series, Amazon Prime Video","khauf"]]],
+ ["Cinematography",[["2024","The Tower","Director of photography · short film","the-tower"],["2022","Katputli","Director of photography · Hindi short film","katputli"],["2024","Damakgardh","Cinematography team · Hindi short film","damakgardh"],["2025","Amrita","Associate director of photography · short film, rough cut","amrita"],["2021–2024","Independent films","Lead cinematographer",""],["2021–2024","Five larger short films","Assistant cinematographer",""]]],
+ ["Camera department",[["2026–now","King","Camera assistant · feature film, Pen Films",""],["2025–now","Project under producer Boney Kapoor","Camera assistant",""],["2023","Khauf","Camera assistant · series, Amazon Prime Video","khauf"]]],
  ["Commercials",[["2024","Finolex LED","Direction team · Early Man Films","finolex-led"],["2024","Finolex Lock","Direction team · Early Man Films","finolex-lock"],["2024","Finolex Wire","Direction team · Early Man Films","finolex-wire"]]],
  ["Directing",[["2018–2020","The Classroom","Co-director, cinematographer, editor · series","the-classroom"]]],
- ["Production design",[["","Mother","Production designer · short film",""]]],
- ["Also on this site",[["","Amrita","Associate director of photography · short film, rough cut","amrita"]]]
+ ["Production design",[["2025","Mother","Production designer · short film",""]]],
 ];
 const OFFCAM=[["2024","Finolex","Direction team · Early Man Films · three films","finolex-led"],["2024","Sleepyhead Mattresses","Shoot planning · Growth Jockey",""],
  ["2020–2022","Mitti to Matka","Media manager",""],["2018–2020","The Classroom","Organiser · Suncity School","the-classroom"]];
 const TIMELINE=[
+ ["2026–now","King","Pen Films · Camera assistant","Joined the camera team in October 2026, as the production prepares to shoot."],
  ["2025–now","Project under producer Boney Kapoor","Camera assistant",""],
  ["2024","Finolex","Early Man Films · Direction team","Production sheets, cast references, the pre-production meeting deck and costume trials."],
- ["2024","Sleepyhead Mattresses","Growth Jockey, Gurugram · Shoot planning","Planned the shoot: equipment, script, and the offer and audience the film was aimed at."],
+ ["2024","Sleepyhead Mattresses","Growth Jockey, Gurugram · Shoot planning","Planned the shoot: equipment, script, the offer and the audience."],
  ["2023","Khauf","Camera assistant","Camera team on the Amazon Prime series."],
  ["2021–2024","Short and independent films","Lead and assistant cinematographer","Lead cinematographer on independent films and assistant cinematographer on five larger short films."],
  ["2020–2022","Mitti to Matka","Gurugram · Media manager","Media for an initiative supporting local potters during COVID."],
  ["2019–2020","Studio photography","Under Nitin Rai, Raghu Rai Center for Photography","Studio fashion photography, July 2019 to March 2020."]
 ];
-const NOTES=[["Based in","Gurugram, India"],["Originally from","Gurugram, Haryana"],["Trained at","Whistling Woods International · B.Sc., Tata Institute of Social Sciences"],["Studio photography under","Nitin Rai"],
- ["Working with","RED, Sony Venice, Sony FX and Alpha"],["Finishing in","DaVinci Resolve"],
+const NOTES=[["Based in","Gurugram, Haryana, India"],["Trained at","Whistling Woods International · B.Sc. awarded by the Tata Institute of Social Sciences"],["Studio photography under","Nitin Rai"],
+ ["Working with","RED, Sony Venice, Sony FX and Alpha"],["Post","DaVinci Resolve, Premiere Pro and Final Cut Pro; DIT and colour"],
  ["Interested in",""],["Currently watching",""],["A filmmaker I keep returning to",""],["A cinematographer who inspires me",""],["Currently developing",""]];
 const REFS=[];        /* e.g. ["Cinematographer","Name"], ["Film","Title"] */
 const RECOGNITION=[]; /* e.g. ["2026","Official Selection","Festival name"] */
@@ -1125,7 +1104,7 @@ vec3 scene(vec2 uv,vec2 p){
   return col*titleND(uv);}
 `;
 
-/* Petrol Blue: blue hour, a street of sodium lamps receding, hexagonal bokeh sized by depth,
+/* petrol scene: blue hour, a street of sodium lamps receding, hexagonal bokeh sized by depth,
    energy conserved, cat's eye toward the edges, colour fringes, the lens breathing. */
 SCENES.petrol = `
 #define TOPND 2.
@@ -1229,7 +1208,7 @@ vec3 scene(vec2 uv,vec2 p){
   return col*titleND(uv);}
 `;
 
-/* Monsoon Interior: rain on the glass, grey-green garden beyond, one warm lamp still on inside.
+/* monsoon scene: rain on the glass, grey-green garden beyond, one warm lamp still on inside.
    Every drop is a small lens holding the garden upside down; runners wipe the mist as they go.
    No lightning flicker: at most a rare, slow brightening of the sky under 5%. */
 SCENES.monsoon = `
@@ -1325,7 +1304,7 @@ vec3 scene(vec2 uv,vec2 p){
   return col*titleND(uv);}
 `;
 
-/* After Hours: night from a moving car. Lit windows at three depths, each building its own,
+/* night scene: night from a moving car. Lit windows at three depths, each building its own,
    each window its own colour temperature; a sodium lamp passes with a thin blue anamorphic
    streak and lens ghosts; the wet road carries it all down in broken reflections. */
 SCENES.night = `
@@ -1424,7 +1403,7 @@ vec3 scene(vec2 uv,vec2 p){
   return col*titleND(uv);}
 `;
 
-/* North Block: hard sun through a stone jaali onto red sandstone. The shadow is the subject:
+/* stone scene: hard sun through a stone jaali onto red sandstone. The shadow is the subject:
    stars and crosses, penumbra widening with distance, shadows filled by sky and red bounce,
    grazing light raking the stone, the pattern creeping slowly with the sun (a bounded drift, period about five minutes). */
 SCENES.stone = `
@@ -2100,8 +2079,8 @@ function sources(m){const out=[],add=u=>{if(u&&!out.includes(u))out.push(u)};
   if(ENV==='artifact'&&m.artifactFilm)return[m.artifactFilm];
   [].concat(m.film||[]).forEach(s=>{if(!/^drive:/.test(String(s).trim()))add(s)});
   return out}
-const embedUrl=u=>{u=String(u||'');let m;if(/youtube\.com\/playlist/.test(u)&&(m=/[?&]list=([\w-]+)/.exec(u)))return'https://www.youtube-nocookie.com/embed/videoseries?list='+m[1]+'&autoplay=1&rel=0&playsinline=1';
-  m=/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/.exec(u);if(m)return'https://www.youtube-nocookie.com/embed/'+m[1]+'?autoplay=1&rel=0&playsinline=1';
+const embedUrl=u=>{u=String(u||'');let m;if(/youtube\.com\/playlist/.test(u)&&(m=/[?&]list=([\w-]+)/.exec(u)))return'https://www.youtube.com/embed/videoseries?list='+m[1]+'&autoplay=1&rel=0&playsinline=1';
+  m=/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/.exec(u);if(m)return'https://www.youtube.com/embed/'+m[1]+'?autoplay=1&rel=0&playsinline=1';
   m=/vimeo\.com\/(?:video\/)?(\d+)/.exec(u);return m?'https://player.vimeo.com/video/'+m[1]+'?autoplay=1&dnt=1':''};
 const canEmbed=p=>ENV!=='artifact'&&!!embedUrl(p&&p.watch);
 const driveId=m=>m.drive||(([].concat(m.film||[]).map(s=>/^drive:(.+)$/.exec(String(s).trim())).find(Boolean)||[])[1])||'';
@@ -2222,7 +2201,7 @@ function build(){
       <input type="range" id="th-seek" min="0" max="1000" step="1" value="0" aria-label="Position in the film">
       <div class="th-tip" id="th-tip" aria-hidden="true"><i></i><span></span></div></div>
     <span class="th-tc th-dur" id="th-dur" aria-hidden="true">00:00:00:00</span>
-    <button type="button" class="th-btn" id="th-mute" aria-pressed="false">Mute</button>
+    <button type="button" class="th-btn" id="th-mute">Mute</button>
     <button type="button" class="th-btn" id="th-cc" aria-pressed="false" hidden>Subtitles</button>
     <button type="button" class="th-btn" id="th-full">Full screen</button>
   </div>`;
@@ -2260,7 +2239,7 @@ function build(){
   video.addEventListener('waiting',()=>{th.classList.add('waiting');if(mse&&!hopT)hopT=setTimeout(hop,300)});
   ['playing','canplay','seeked'].forEach(t=>video.addEventListener(t,()=>th.classList.remove('waiting')));
   video.addEventListener('progress',buffered);video.addEventListener('timeupdate',()=>{if(!raf)paint()});
-  video.addEventListener('volumechange',()=>{E.mute.textContent=video.muted?'Sound on':'Mute';E.mute.setAttribute('aria-pressed',String(video.muted));sound={muted:video.muted,vol:video.volume};try{localStorage.setItem('kc-sound',JSON.stringify(sound))}catch(e){}});
+  video.addEventListener('volumechange',()=>{E.mute.textContent=video.muted?'Unmute':'Mute';sound={muted:video.muted,vol:video.volume};try{localStorage.setItem('kc-sound',JSON.stringify(sound))}catch(e){}});
   video.addEventListener('ended',()=>{if(chain&&chain.k<chain.P.segs.length-1){chainGo(chain.k+1,null,true);return}ended=true;last[cur.id]=0;endCard()});
   video.addEventListener('error',()=>{if(mse){const P=mse.P,t=mse.want!=null?mse.want:TL.now();mseStop();chainStart(P,t,!video.paused)}else if(chain){const c=chain,er=video.error;if(er&&(er.code===2||er.code===4)&&(c.err=(c.err||0)+1)<=3){const k=c.k,go=!video.paused;setTimeout(()=>{if(chain===c&&c.k===k&&video.error)chainGo(k,TL.now(),go)},1500*c.err)}else fail()}else{const er=video.error;if(er&&(er.code===2||(er.code===4&&navigator.onLine===false))&&++perr<=3){const n=openN,t=startAt!=null?startAt:video.currentTime;clearTimeout(watchT);setTimeout(()=>{if(theatreOpen&&openN===n&&!mse&&!chain&&video.error){startAt=t;load()}},Math.min(8000,1500*perr))}else next()}});
   video.addEventListener('playing',()=>{if(chain)chain.err=0;else if(!mse)perr=0});
@@ -2284,7 +2263,7 @@ function step(dt){if(TL.dur())TL.seek(TL.now()+dt);poke();paint()}
 function keys(e){
   if(e.altKey||e.ctrlKey||e.metaKey)return;const k=e.key,onBtn=e.target.closest&&e.target.closest('button,a'),onSeek=e.target===E.seek;
   if(k==='Escape'){e.preventDefault();e.stopPropagation();if(!D.fullscreenElement)close();return}
-  if(k==='Tab'){const f=[...th.querySelectorAll('button:not([hidden]),a[href],input')].filter(x=>x.getClientRects().length&&!x.closest('[hidden]'));if(!f.length)return;
+  if(k==='Tab'){const f=[...th.querySelectorAll('button:not([hidden]),a[href],input,iframe')].filter(x=>x.getClientRects().length&&!x.closest('[hidden]')&&getComputedStyle(x).visibility!=='hidden');if(!f.length)return;
     const a=f[0],z=f[f.length-1];if(!th.contains(D.activeElement)){e.preventDefault();(e.shiftKey?z:a).focus();poke();return}if(e.shiftKey&&D.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&D.activeElement===z){e.preventDefault();a.focus()}poke();return}
   if(!E.msg.hidden||th.classList.contains('embed'))return;
   if((k===' '||k==='Enter')&&!onBtn){e.preventDefault();toggle()}
@@ -2302,8 +2281,8 @@ function fail(){
   const m=M(cur),id=driveId(m),out=m.link||cur.watch||(id?'https://drive.google.com/file/d/'+encodeURIComponent(id)+'/view':'');
   mseStop();chain=null;video.removeAttribute('src');video.load();th.classList.remove('waiting');th.classList.add('failed');
   if(id&&ENV!=='artifact'&&!E.gate.querySelector('iframe')){const f=D.createElement('iframe');f.src='https://drive.google.com/file/d/'+encodeURIComponent(id)+'/preview';f.allow='autoplay; fullscreen';f.title=cur.title;f.setAttribute('allowfullscreen','');E.gate.appendChild(f);th.classList.add('embed');E.spec.textContent='GOOGLE DRIVE PLAYER · RE-COMPRESSED';return}
-  E.msg.innerHTML=`<p class="slug">THE PROJECTOR IS DARK</p><p class="th-line">This film could not be loaded here.</p><p class="th-links">${out?`<a class="open" href="${esc(out)}" target="_blank" rel="noopener">Open the film in a new tab</a>`:''}<button type="button" class="th-btn" data-th="close">Close</button></p>`;
-  E.msg.hidden=false;(E.msg.querySelector('a,button')||E.close).focus();say('This film could not be loaded.')}
+  E.msg.innerHTML=`<p class="slug">COULD NOT PLAY</p><p class="th-line">The film did not load. Close this and press Play to try again.</p><p class="th-links">${out?`<a class="open" href="${esc(out)}" target="_blank" rel="noopener">Open the film in a new tab</a>`:''}<button type="button" class="th-btn" data-th="close">Close</button></p>`;
+  E.msg.hidden=false;(E.msg.querySelector('a,button')||E.close).focus();say('The film did not load.')}
 function endCard(){const i=PROJECTS.indexOf(cur),nx=i>=0?PROJECTS[(i+1)%PROJECTS.length]:null;
   E.end.innerHTML=`<p class="slug">FADE OUT.</p><p class="th-line">${esc(cur.title)}</p><p class="th-links"><button type="button" class="th-btn" data-th="again">Watch again</button>${nx&&nx!==cur?`<a class="open" href="#${nx.id}" data-go="${nx.id}" data-th="go">Next film<span class="vh">: ${esc(nx.title)}</span></a>`:''}<button type="button" class="th-btn" data-th="close">Close</button></p>`;
   E.end.hidden=false;th.classList.remove('idle');E.end.querySelector('button').focus()}
@@ -2313,22 +2292,24 @@ function open(id,from,at,ep,epTitle){
   if(!th)build();cur=p;si=0;ended=false;scrubbing=false;perr=0;openN++;opener=from||D.activeElement;fps=+m.fps||25;
   const n=ratio(m);th.style.setProperty('--ar',String(n));th.style.setProperty('--pos','0');th.style.setProperty('--buf','0');
   E.title.textContent='SCREENING — '+p.title.toUpperCase()+(has(id,'excerpt')?' · EXCERPT':'');E.spec.textContent='';E.tc.textContent=E.dur.textContent='00:00:00:00';E.seek.value=0;
-  E.msg.hidden=E.end.hidden=true;th.classList.remove('failed','embed','idle','playing');th.classList.add('waiting');const fr=E.gate.querySelector('iframe');if(fr)fr.remove();
-  video.poster=m.poster||'';video.muted=!!sound.muted;video.volume=sound.vol;E.mute.textContent=video.muted?'Sound on':'Mute';E.mute.setAttribute('aria-pressed',String(video.muted));
+  E.msg.hidden=E.end.hidden=true;th.classList.remove('failed','embed','idle','playing');th.classList.add('waiting');const fr=E.gate.querySelector('iframe');if(fr)fr.remove();th.querySelectorAll('.th-out').forEach(x=>x.remove());
+  video.poster=m.poster||'';video.muted=!!sound.muted;video.volume=sound.vol;E.mute.textContent=video.muted?'Unmute':'Mute';
   [...video.querySelectorAll('track')].forEach(t=>t.remove());E.cc.hidden=!m.caps;
   if(m.caps){const t=D.createElement('track');t.kind='subtitles';t.srclang=m.capsLang||'en';t.label=m.capsLabel||'English';t.src=m.caps;video.appendChild(t);E.cc.setAttribute('aria-pressed','false')}
   lightWas=W.Light&&Light.paused?Light.paused():false;if(W.Light)Light.setPaused(true);loops.forEach(v=>v.pause());if(pv)pv.pause();
   ['main','nav'].forEach(k=>{const el=$('#'+k);if(el)el.inert=true});D.body.style.overflow='hidden';
   clearTimeout(hideT);theatreOpen=true;th.hidden=false;void th.offsetWidth;th.classList.add('on');E.play.focus({preventScroll:true});
   if('mediaSession' in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:p.title,artist:'Karan Chaudhary'})}catch(e){}}
-  if(emb){th.classList.remove('waiting');th.classList.add('embed');const f=D.createElement('iframe');f.src=emb;f.allow='autoplay; fullscreen; encrypted-media; picture-in-picture';f.title=p.title;f.setAttribute('allowfullscreen','');f.referrerPolicy='strict-origin-when-cross-origin';E.gate.appendChild(f);
-    E.title.textContent=ep&&epTitle?p.title.toUpperCase()+' — '+String(epTitle).toUpperCase():(p.watchLabel?p.watchLabel.replace(/^Watch the /i,'').replace(/ on .*$/i,'').toUpperCase():'SCREENING')+' — '+p.title.toUpperCase();E.spec.textContent=/vimeo/i.test(emb)?'VIMEO':'YOUTUBE';E.close.focus({preventScroll:true})}
+  if(emb){th.classList.remove('waiting');th.classList.add('embed');const f=D.createElement('iframe');f.src=emb;f.allow='autoplay; fullscreen; encrypted-media; picture-in-picture';f.title=ep&&epTitle?p.title+': '+epTitle:p.title;f.setAttribute('allowfullscreen','');f.referrerPolicy='strict-origin-when-cross-origin';E.gate.appendChild(f);
+    E.title.textContent=ep&&epTitle?p.title.toUpperCase()+' — '+String(epTitle).toUpperCase():(p.watchLabel?p.watchLabel.replace(/^Watch the /i,'').replace(/ on .*$/i,'').toUpperCase():'SCREENING')+' — '+p.title.toUpperCase();E.spec.textContent=/vimeo/i.test(emb)?'VIMEO':'YOUTUBE';
+    {const o=D.createElement('p');o.className='th-out';const u=ep?'https://www.youtube.com/watch?v='+ep:p.watch;o.innerHTML=`<a class="open" href="${esc(u)}" target="_blank" rel="noopener">Not playing? Open it on ${/vimeo/i.test(emb)?'Vimeo':'YouTube'}</a>`;th.appendChild(o)}
+    E.close.focus({preventScroll:true})}
   else if(P){const a0=startAt!=null?startAt:(last[p.id]||0);startAt=null;E.dur.textContent=tc(P.total,fps);partsStart(P,a0<P.total-5?a0:0)}
-  else if(srcs.length)load();else fail();say('Screening: '+p.title)}
+  else if(srcs.length)load();else fail();say('Screening: '+(ep&&epTitle?epTitle:p.title))}
 function close(leaving){
   if(!theatreOpen)return;theatreOpen=false;clearTimeout(watchT);clearTimeout(idleT);cancelAnimationFrame(raf);raf=0;
   {const tn=TL.now();if(cur&&tn>3&&!ended)last[cur.id]=tn}
-  video.pause();mseStop();chain=null;video.removeAttribute('src');video.load();video.disableRemotePlayback=false;const fr=E.gate.querySelector('iframe');if(fr)fr.remove();
+  video.pause();mseStop();chain=null;video.removeAttribute('src');video.load();video.disableRemotePlayback=false;const fr=E.gate.querySelector('iframe');if(fr)fr.remove();th.querySelectorAll('.th-out').forEach(x=>x.remove());
   if(D.fullscreenElement){try{D.exitFullscreen()}catch(e){}}
   th.classList.remove('on','playing','idle','waiting');const done=()=>{th.hidden=true};clearTimeout(hideT);if(RMQ.matches)done();else hideT=setTimeout(done,320);
   ['main','nav'].forEach(k=>{const el=$('#'+k);if(el)el.inert=false});D.body.style.overflow='';
@@ -2422,13 +2403,13 @@ root.innerHTML=`
   ${head('01','Camera','tool-flicker','Flicker-safe shutter','Find the shutter angles that sit on whole pulses of mains-powered light, so the picture does not flicker.')}
   <div class="tool-in">
     ${field('fps','Frame rate','fps',25,'',`<span class="tf-row"><select data-k="pick" aria-label="Quick pick a frame rate"><option value="">Quick pick</option>${[23.976,24,25,30,48,50,60,100,120].map(v=>`<option>${v}</option>`).join('')}</select></span>`)}
-    ${field('hz','Mains frequency','Hz',50,'50 Hz in India and most of Europe, 60 Hz in North America. Type 49.5 for a drifting generator.')}
+    ${field('hz','Mains frequency','Hz',50,'50 Hz in India and most of Europe, 60 Hz in North America. On a generator, type the frequency it is actually running at, for example 49.5.')}
     ${field('angle','Shutter angle to test','degrees',180)}
   </div>
-  <div class="tool-out" aria-live="polite">
-    <span class="meta">Answer</span><p class="tool-big" data-o="verdict">${DASH}</p><p class="tool-line" data-o="nearest"></p><p class="tool-formula" data-o="formula"></p>
+  <div class="tool-out">
+    <span class="meta">Answer</span><p class="tool-big" data-o="verdict" aria-live="polite" aria-atomic="true">${DASH}</p><p class="tool-line" data-o="nearest"></p><p class="tool-formula" data-o="formula"></p>
     <span class="meta tool-sub">Safe angles up to 360</span><ul class="tool-list" data-o="rows"></ul>
-    <p class="tool-note">Only for lights that follow the mains: magnetic-ballast HMI, tubes, some LEDs. LEDs with their own dimming, screens and projectors pulse at other rates, and tungsten barely flickers. Check the monitor.</p>
+    <p class="tool-note">Only for lights that follow the mains: HMIs and fluorescent tubes on magnetic ballasts, and some LEDs. LEDs with their own dimming, screens and projectors pulse at other rates, and tungsten barely flickers. Check the monitor.</p>
   </div>
 </article>
 <article class="tool" id="tool-eighths" aria-labelledby="tool-eighths-h">
@@ -2443,8 +2424,8 @@ root.innerHTML=`
       <div class="te-row"><input data-k="paceW" type="number" inputmode="numeric" min="0" step="1" value="4" aria-label="Planned pages a day, whole pages"><span class="unit">pages a day</span><input data-k="paceE" type="number" inputmode="numeric" min="0" step="1" value="0" aria-label="Planned pages a day, eighths"><span class="unit">/ 8</span></div>
       <div class="te-row te-one"><input data-k="mpp" type="number" inputmode="decimal" min="0" step="any" value="1" aria-label="Screen minutes per page"><span class="unit">minutes a page on screen</span></div></div>
   </div>
-  <div class="tool-out" aria-live="polite">
-    <span class="meta">Total pages</span><p class="tool-big" data-o="total">${DASH}</p><p class="tool-formula" data-o="totalF"></p>
+  <div class="tool-out">
+    <span class="meta">Total pages</span><p class="tool-big" data-o="total" aria-live="polite" aria-atomic="true">${DASH}</p><p class="tool-formula" data-o="totalF"></p>
     <span class="meta tool-sub">Shoot days at your pace</span><p class="tool-big ok" data-o="days">${DASH}</p><p class="tool-formula"><span data-o="daysF"></span><br><span data-o="daysN"></span></p>
     <span class="meta tool-sub">Screen time, rule of thumb</span><p class="tool-mid" data-o="screen">${DASH}</p><p class="tool-formula" data-o="screenF"></p>
     <p class="tool-line" data-o="problem"></p>
@@ -2452,7 +2433,7 @@ root.innerHTML=`
   </div>
 </article>
 <article class="tool" id="tool-cards" aria-labelledby="tool-cards-h">
-  ${head('03','Data','tool-cards','Cards and drives','How many cards and drives a shoot needs, with every copy you keep.')}
+  ${head('03','Data','tool-cards','Cards and drives','How fast the cards fill, and how many drives you need for every copy you keep.')}
   <div class="tool-in two">
     ${field('bitrate','Recording bitrate','Mb/s',400,'Read it from your camera manual for your codec, resolution and frame rate.')}
     ${field('hours','Hours rolled per shoot day','hours',1.5)}
@@ -2463,8 +2444,8 @@ root.innerHTML=`
     ${field('free','Space to leave free per drive','%',10)}
     ${field('offload','Offload speed','MB/s',200,'Depends on your card reader, cable and drive.')}
   </div>
-  <div class="tool-out" aria-live="polite">
-    <span class="meta">Drives to buy, estimate</span><p class="tool-big ok" data-o="buy">${DASH}</p>
+  <div class="tool-out">
+    <span class="meta">Drives to buy, estimate</span><p class="tool-big ok" data-o="buy" aria-live="polite" aria-atomic="true">${DASH}</p>
     <ul class="tool-list">${[['gbh','GB per hour'],['rec','Record time per card'],['day','GB per day'],['loads','Card loads per day'],['tbc','TB per copy'],['tba','TB, all copies'],['dpc','Drives per copy'],['spare','Spare space per drive'],['off','Offload one full card']].map(([k,l])=>`<li><span>${l}</span><span data-o="${k}">${DASH}</span></li>`).join('')}</ul>
     <p class="tool-formula" data-o="formula"></p>
     <p class="tool-note">Estimates only. A drive holds a little less than its label says, and a verified copy takes longer than a plain one.</p>
@@ -2477,8 +2458,8 @@ root.innerHTML=`
     ${field('fps','Frame rate','fps',24,'',`<span class="tf-row"><select data-k="pick" aria-label="Quick pick a frame rate"><option value="">Quick pick</option>${[23.976,24,25,30,48,50,60].map(v=>`<option>${v}</option>`).join('')}</select></span>`)}
     ${field('temp','Air temperature','°C',25,'Changes the speed of sound only a little.')}
   </div>
-  <div class="tool-out" aria-live="polite">
-    <span class="meta">Answer</span><p class="tool-big" data-o="verdict">${DASH}</p><p class="tool-line" data-o="line"></p>
+  <div class="tool-out">
+    <span class="meta">Answer</span><p class="tool-big" data-o="verdict" aria-live="polite" aria-atomic="true">${DASH}</p><p class="tool-line" data-o="line"></p>
     <ul class="tool-list">${[['ms','Delay in milliseconds'],['frames','Delay in frames'],['slip','Slip the audio earlier by'],['per','Distance that costs one frame']].map(([k,l])=>`<li><span>${l}</span><span data-o="${k}">${DASH}</span></li>`).join('')}</ul>
     <p class="tool-formula" data-o="formula"></p>
     <p class="tool-note">The slip is rounded to a whole frame; an editor can slip by part of a frame for an exact match. If you synced by a clap recorded at the same distance, the delay is already built in: use this for timecode sync, or when sources sit at different distances. Straight-line air path only. Wind, echo and room reflections are ignored.</p>
@@ -2493,8 +2474,8 @@ root.innerHTML=`
       <div class="te-row"><input data-k="min" type="number" inputmode="numeric" min="0" step="1" value="3" aria-label="Track length, minutes"><span class="unit">min</span><input data-k="sec" type="number" inputmode="decimal" min="0" step="any" value="30" aria-label="Track length, seconds"><span class="unit">s</span></div></div>
     ${field('bpm','Track tempo, optional','BPM',100,'Leave empty to skip the tempo line.')}
   </div>
-  <div class="tool-out" aria-live="polite">
-    <span class="meta">Answer</span><p class="tool-big" data-o="verdict">${DASH}</p><p class="tool-line" data-o="line"></p><p class="tool-line tool-warn" data-o="warn"></p>
+  <div class="tool-out">
+    <span class="meta">Answer</span><p class="tool-big" data-o="verdict" aria-live="polite" aria-atomic="true">${DASH}</p><p class="tool-line" data-o="line"></p><p class="tool-line tool-warn" data-o="warn"></p>
     <ul class="tool-list">${[['onset','Track length on set'],['pitch','Pitch, if not corrected'],['tempo','Tempo on set']].map(([k,l])=>`<li><span>${l}</span><span data-o="${k}">${DASH}</span></li>`).join('')}</ul>
     <p class="tool-formula" data-o="formula"></p>
     <p class="tool-note">Pitch only changes if the playback is not pitch-corrected. The edit always runs at the project rate. Check the sound with the playback operator.</p>
@@ -2515,7 +2496,7 @@ const wire=(id,paint)=>{const el=D.getElementById(id),o=k=>el.querySelector('[da
   if(r.noSafe){V.textContent='No safe angle';N.textContent='The frame rate is more than twice the mains frequency, so no shutter angle sits on whole light pulses.';return}
   if(!t){V.textContent=DASH;N.textContent='Enter a shutter angle from 0 to 360 to test it.';return}
   V.classList.toggle('ok',t.isSafe);V.textContent=f1(t.angle)+'° '+(t.isSafe?'is safe':'is not safe');
-  if(t.isSafe)N.textContent='Shutter speed 1/'+f1(t.denom)+' s. Flicker-free under these lights.';
+  if(t.isSafe)N.textContent='Shutter speed 1/'+f1(t.denom)+' s. Lights that follow the mains should not flicker at this angle.';
   else{const s=Math.abs(t.stops).toFixed(2),w=s==='1.00'?'stop':'stops';
     N.textContent='Nearest safe: '+f1(t.nearest.angle)+'° (1/'+f1(t.nearest.denom)+' s), '+(s==='0.00'?'no change in exposure':t.stops>0?'costs '+s+' '+w+' of light':'adds '+s+' '+w+' of light')+'.'}});
  T.v('pick').addEventListener('change',e=>{if(e.target.value){T.v('fps').value=e.target.value;e.target.value='';T.run()}});T.run()}
@@ -2554,7 +2535,7 @@ const wire=(id,paint)=>{const el=D.getElementById(id),o=k=>el.querySelector('[da
   const tv=v('temp').value.trim(),tt=parseFloat(tv)<0?'('+tv+')':tv;
   o('formula').textContent='Speed = 331.3 × √(1 + '+tt+' ÷ 273.15) = '+r.c.toFixed(1)+' m/s. Delay = '+m+' ÷ '+r.c.toFixed(1)+' = '+r.sec.toFixed(4)+' s. Frames = '+r.sec.toFixed(4)+' × '+v('fps').value+' = '+fr+'.'});
  T.v('pick').addEventListener('change',e=>{if(e.target.value){T.v('fps').value=e.target.value;e.target.value='';T.run()}});
- T.v('unit').addEventListener('change',T.run);T.run()}
+ T.v('unit').addEventListener('change',T.run);T.v('temp').removeAttribute('inputmode');T.run()}
 
 {const len=s=>{const t=Math.round(s*10),m=Math.floor(t/600),r=(t-m*600)/10;return m>0?m+' min '+f1(r)+' s':f1(r)+' s'};
  wire('tool-playback',(el,o,v)=>{
@@ -2599,7 +2580,7 @@ const rtOf=p=>String(p.runtime||(p.media&&p.media.runtime)||'').toUpperCase();
 $('#reels').innerHTML=PROJECTS.filter(p=>p.id!=='the-classroom').map((p,i)=>`<article class="reel ${LAY[i%4]}">
   <a class="shot" href="#${p.id}" data-go="${p.id}" tabindex="-1" aria-label="Open ${esc(p.title)}">${frame(p,RAT[i%8],['LIGHT STUDY · STAND-IN',rtOf(p)])}</a>
   <h3>${esc(p.title)}</h3>
-  <div class="row2"><span class="slug">${p.n}\u00a0— ${esc(p.type.toUpperCase())}${p.role||p.year?'<br>'+ty([p.role,p.year].filter(Boolean).join(' · ')):''}</span><p>${ty(p.line||'')}</p><a class="open" href="#${p.id}" data-go="${p.id}">About the film<span class="vh">: ${esc(p.title)}</span></a></div></article>`).join('');
+  <div class="row2"><span class="slug">${p.n}\u00a0— ${esc(p.type.toUpperCase())}${p.role||p.year?'<br>'+ty([p.role,p.year].filter(Boolean).join(' · ')):''}</span><p>${ty(p.line||'')}</p><a class="open" href="#${p.id}" data-go="${p.id}">${/^Series/.test(p.type)?'About the series':'About the film'}<span class="vh">: ${esc(p.title)}</span></a></div></article>`).join('');
 const rowHTML=([y,t,r,id])=>{const p=id&&PROJECTS.find(x=>x.id===id),yc=y?`<span class="y">${esc(y)}</span>`:'';
   return p?`<a class="row" href="#${id}" data-go="${id}" data-scene="${p.scene}" data-seed="${p.seed}">${yc}<span class="t">${esc(t)}<span class="go" aria-hidden="true">&thinsp;→</span></span><span class="r">${ty(r)}</span></a>`
          :`<div class="row">${yc}<span class="t">${esc(t)}</span><span class="r">${ty(r)}</span></div>`};
@@ -2611,14 +2592,11 @@ $('#notes').innerHTML=NOTES.filter(n=>n[1]).map(([k,v])=>`<div><dt class="meta">
 if(REFS.length){$('#refs').innerHTML=REFS.map(([k,v])=>`<div class="ref"><span class="meta">${esc(k)}</span><b>${ty(v)}</b></div>`).join('');$('#refs-wrap').hidden=false}
 if(RECOGNITION.length){$('#recognition').innerHTML=RECOGNITION.map(([y,a,b])=>`<div class="item"><span class="when">${esc(y)}</span><div><h3>${esc(a)}</h3><p>${ty(b||'')}</p></div></div>`).join('');$('#rec-wrap').hidden=false}
 if(PHOTOS.length){$('#book').innerHTML=PHOTOS.map((p,i)=>`<figure class="plate ${p.size||''}"><img src="${esc(p.src)}" alt="${esc(p.cap||'Photograph')}" loading="lazy" decoding="async"><figcaption style="display:flex;justify-content:space-between;gap:12px"><span class="slug">Plate ${two(i+1)}</span><span class="slug">${esc(p.cap||'')}</span></figcaption></figure>`).join('');$$('[data-photos]').forEach(a=>a.hidden=false)}
-const ROLLS=['afternoon','night','stone'];
-const sheetEl=$('#sheet');if(sheetEl)sheetEl.innerHTML=Array.from({length:18},(_,i)=>{const r=Math.floor(i/6);
-  return `<div class="cell${[3,8,14].includes(i)?' mark':''}"><div class="frame" data-scene="${ROLLS[r]}" data-seed="${r*3.1+1}" data-static data-t="${(r*40+(i%6)*1.6).toFixed(1)}"></div><span class="n"><span>${two(i+1)}</span><span>${i%6===0?'ROLL '+two(r+1):''}</span></span></div>`}).join('');
 
 const ending=id=>`<section class="endcard" aria-labelledby="${id}-h"><div class="sec"><h2 class="meta" id="${id}-h">Contact</h2><span class="slug">Gurugram, India</span></div>
   <a class="endcard-t" href="#contact" data-go="contact" tabindex="-1">Let’s make <i>something.</i></a>
   <div class="mailrow"><a class="mail" id="${id}" href="mailto:thekaranchaudhary3208@gmail.com" aria-label="thekaranchaudhary3208@gmail.com">thekaranchaudhary3208<wbr>@gmail.com</a><button class="copy" type="button" data-copy="${id}">Copy email</button><a class="open" href="#contact" data-go="contact">All contact details</a></div></section>`;
-['work','tools','about','photographs'].forEach(k=>$('#p-'+k+' > .foot').insertAdjacentHTML('beforebegin',ending(k+'-email')));
+['work','tools','about'].forEach(k=>$('#p-'+k+' > .foot').insertAdjacentHTML('beforebegin',ending(k+'-email')));
 const note=(label,arr,c)=>`<div class="note${c?' '+c:''}"><h2 class="meta">${label}</h2><div>${arr.map(t=>`<p>${ty(t)}</p>`).join('')}</div></div>`;
 const excerptOnly=p=>Media.has(p.id,'excerpt');
 function projectPage(p,still){
@@ -2638,7 +2616,7 @@ function projectPage(p,still){
     const at=(k+.5)*m.dur/st.n,t=Media.tc(at,m.fps||25).slice(0,8);
     return `<button type="button" class="cf" style="${bg}" data-play="${p.id}" data-at="${at.toFixed(2)}" aria-label="Play ${esc(p.title)} from ${t}"><span aria-hidden="true">${t}</span></button>`}).join('')}</div>`:'';
   const eps=p.episodes||[],epHere=Media.has(p.id,'embed');
-  const epsHTML=eps.length?`<div class="sec"><h2 class="meta">Episodes</h2><span class="slug">${two(eps.length)}\u00a0on YouTube${epHere?'\u00a0· they play here':''}</span></div>
+  const epsHTML=eps.length?`<div class="sec"><h2 class="meta">Episodes</h2><span class="slug">On YouTube${epHere?'\u00a0· they play here':''}</span></div>
   <div class="eps">${eps.map((e,k)=>{const inner=`${epHere?`<span class="ep-im"><img src="https://i.ytimg.com/vi/${esc(e.id)}/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><i aria-hidden="true"></i></span>`:''}<span class="ep-t">${esc(e.title)}</span>`;
     return epHere?`<button type="button" class="ep" data-play="${p.id}" data-ep="${esc(e.id)}" data-ep-title="${esc(e.title)}" aria-label="Play ${esc(e.title)}">${inner}</button>`
                  :`<a class="ep" href="https://www.youtube.com/watch?v=${esc(e.id)}" target="_blank" rel="noopener">${inner}</a>`}).join('')}</div>`:'';
@@ -2662,7 +2640,7 @@ function projectPage(p,still){
   ${ending('film-email')}
   ${foot(ty('Karan Chaudhary · '+p.title))}`}
 
-const PAGES=['home','work','photographs','tools','about','contact'];
+const PAGES=['home','work','tools','about','contact'];
 const slate=$('#slate'),slateTxt=$('#slate-txt'),navEl=$('#nav'),mainEl=$('#main');
 const sheetMenu=$('#sheet-menu'),menuBtn=$('#menu-btn');
 const pos={},from={},FOC='a[href],button,[tabindex]';let current=null,navToken=0;
@@ -2692,7 +2670,7 @@ function show(id,o){
 function go(id,o){
   if(Media.isOpen())Media.close(true);
   o=o||{};const target=resolve(id).id;
-  if(target===current&&!o.restore){closeMenu(false);window.scrollTo({top:0,behavior:RM?'auto':'smooth'});return}
+  if(target===current&&!o.restore){const m=!sheetMenu.hidden;closeMenu(false);window.scrollTo({top:0,behavior:RM?'auto':'smooth'});if(m){const h=document.querySelector('.page.on h1');if(h)h.focus({preventScroll:true})}return}
   if(current){pos[current]=scrollY;const ae=document.activeElement,pg=ae&&ae!==document.body&&ae.closest('.page,.nav');
     from[current]=pg?{el:ae,i:pg.classList.contains('page')?[...pg.querySelectorAll(FOC)].indexOf(ae):-1}:null}
   const y=o.restore?(pos[target]||0):0,proj=PROJECTS.find(p=>p.id===target),fromMenu=!sheetMenu.hidden,tok=++navToken;
@@ -2734,6 +2712,7 @@ const keepHero=()=>{const k=!!heroOver.querySelector('button:focus-visible');if(
 ['focusin','focusout','keyup'].forEach(t=>heroOver.addEventListener(t,keepHero));
 
 const hinge=$('#hinge'),stage=$('#stage'),hingeFrame=$('#hinge-frame'),hingeQ=$('#hinge .q');
+stage.addEventListener('click',e=>{if(!e.target.closest('a,button'))go('the-classroom')});
 const endEl=$('#end'),finEl=$('#finale'),finStage=$('#finale .fin-stage'),finLoc=$('#finale .fin-loc'),finCta=$('#finale .cta');
 const sm=(a,b,x)=>{const t=Math.min(1,Math.max(0,(x-a)/(b-a)));return t*t*(3-2*t)};
 $('#hinge .card a').addEventListener('focus',()=>{if(!html.classList.contains('hj'))return;const r=hinge.getBoundingClientRect(),lead=innerHeight*.5,run=r.height-innerHeight+lead,p=(lead-r.top)/Math.max(1,run);if(p<.17||p>.33)scrollTo(0,r.top+scrollY-lead+run*.26)});
@@ -2767,7 +2746,7 @@ addEventListener('resize',()=>{lastP=-1;hingeUpdate();navState()},{passive:true}
 
 let paused=false;try{paused=localStorage.getItem('kc-light')==='hold'}catch(e){}
 function syncMotionButtons(){$$('[data-motion]').forEach(b=>{b.dataset.paused=String(paused);b.querySelector('span').textContent=paused?'Play light':'Pause light'})}
-function setPaused(b,tell){paused=b;Light.setPaused(b);Media.setPaused(b);syncMotionButtons();try{localStorage.setItem('kc-light',b?'hold':'roll')}catch(e){}if(tell)say(b?'Light paused':'Light playing')}
+function setPaused(b,tell){paused=b;Light.setPaused(b);Media.setPaused(b);syncMotionButtons();if(tell)try{localStorage.setItem('kc-light',b?'hold':'roll')}catch(e){}if(tell)say(b?'Light paused':'Light playing')}
 document.addEventListener('click',e=>{if(e.target.closest('[data-motion]'))setPaused(!paused,true)});
 const tcEl=$('#tc');
 let untick=null;
