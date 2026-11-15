@@ -438,8 +438,8 @@ a.row:hover .t,a.row:focus-visible .t{transform:translateX(8px)}
   .now>.slug,.now>div,.training>.meta,.training>div,.fgroup>h3,.fgroup>.rows,.tl .when,.tl .item>div,.note>h2,.note>div,.plot>p,.plot>figure,
   .about .portrait,.about .bio-col,.clist,.closing,.plate,.contact-big{grid-column:1/-1!important;grid-row:auto!important}
   .tl .when{padding-top:0;margin-bottom:6px}
-  .row{grid-template-columns:5.5em minmax(0,1fr)}.row .r{grid-column:2}
-  .fgroup .row{grid-template-columns:minmax(0,1fr)}.fgroup .row .r{grid-column:1}
+  .row{grid-template-columns:5.5em minmax(0,1fr)}.row .t,.row .r{grid-column:2}
+  .fgroup .row{grid-template-columns:minmax(0,1fr)}.fgroup .row .t,.fgroup .row .r{grid-column:1}
   .credits div{grid-column:span 6}
   .notes{grid-template-columns:minmax(0,1fr)}
   .studies .g2,.studies .g3{grid-column:1/-1}.studies .g2 .frame{aspect-ratio:16/9;height:auto;min-height:0}.studies .g3 .frame{aspect-ratio:4/5;height:auto;min-height:0}
@@ -457,6 +457,12 @@ a.row:hover .t,a.row:focus-visible .t{transform:translateX(8px)}
   html.hj .hinge{height:300svh}
 }
 @media (max-width:600px){
+  
+  :root{--sp-section:64px;--sp-block:28px}
+  .reel{margin-bottom:84px}
+  .coda{padding-block:72px 80px}
+  .finale{padding-top:32px}
+  .fin-loc{top:22px}
   .sec{flex-wrap:wrap;row-gap:6px}.sec>*{white-space:nowrap}
   .hero .top{flex-direction:column;gap:6px}
   .hero #tc{position:absolute;top:calc(var(--navh) + 16px);right:var(--mr)}
@@ -479,6 +485,10 @@ a.row:hover .t,a.row:focus-visible .t{transform:translateX(8px)}
 .frame.has-still .still,.frame.has-video .loop{opacity:1}
 .reel .shot:hover .frame :is(.still,.loop){transform:scale(1.02)}
 html.hj .hinge .stage.climax .frame :is(.still,.loop){filter:brightness(var(--ex,1)) saturate(var(--es,1))}
+
+html.hj .hinge .frame.is-media :is(.still,.loop){inset:auto;left:50%;top:calc(var(--wy) + var(--mt,0) * (50% - var(--wy)));
+  width:calc(var(--ww) + var(--mt,0) * (100vw - var(--ww)));height:calc(var(--wh) + var(--mt,0) * (100svh - var(--wh)));
+  transform:translate(-50%,-50%);object-fit:cover;transition:opacity .7s var(--ease-film)}
 
 .play{display:inline-flex;align-items:center;gap:14px;margin:28px 0 0;padding:15px 22px 15px 18px;border:1px solid currentColor;background:none;cursor:pointer;color:inherit;
   font:500 12px var(--ui);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:background-color .2s var(--ease-state),color .2s var(--ease-state)}
@@ -635,7 +645,6 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
       <p class="slug loc">INT. THE CLASSROOM — LATE AFTERNOON</p>
       <div class="frame" id="hinge-frame" data-pid="the-classroom" data-scene="classroom" data-hero data-gate data-seed="6.8" role="img" aria-label="Light study: late light through classroom blinds, chalk dust in the air"></div>
       <i class="matte m-t"></i><i class="matte m-b"></i><i class="matte m-l"></i><i class="matte m-r"></i><i class="frameline" aria-hidden="true"></i>
-      <blockquote class="q"><p style="margin:0">“There was no one to hand the logistics to, so whoever held the camera also found the room and the people.”</p><cite class="slug">On The Classroom</cite></blockquote>
       <div class="card"><h3>The Classroom</h3><span class="slug"><span id="hinge-n">05</span>&nbsp;— Series, four episodes&nbsp;· Co-director, cinematographer, editor</span><a class="open" href="#the-classroom" data-go="the-classroom">About the film<span class="vh">: The Classroom</span></a></div>
       <div class="scrim"></div>
       <p class="l4">Now I want to learn <i>producing.</i></p>
@@ -646,7 +655,7 @@ button.cf:hover span,button.cf:focus-visible span{opacity:1}
   <div class="endband tone-light" id="end">
     <div class="quote-wrap">
       <h2 class="meta">Why producing</h2>
-      <p class="quote">I got more interested in how a whole film gets made, not only how it is shot.</p>
+      <p class="quote">I got more interested in how a whole film gets made, not only how it is shot. Now I want to make <i>films of my own,</i> with my style and my name on them, because I trust my own taste.</p>
     </div>
     <div class="sec"><h2 class="meta">Now</h2><span class="slug">Camera team</span></div>
     <div class="now"><span class="slug">2025–now</span><div><h3>Camera department</h3><span class="meta">Camera assistant&nbsp;· a project under producer Boney&nbsp;Kapoor</span></div></div>
@@ -2451,7 +2460,7 @@ function navState(){
   if(current==='home'){
     const e=endEl.getBoundingClientRect().top,fin=finEl.getBoundingClientRect().top;tone=e<navh&&fin>navh?'light':'dark';
     if(html.classList.contains('hj')){const r=hinge.getBoundingClientRect();if(r.top<=0&&r.bottom>=navh){const v=k=>parseFloat(stage.style.getPropertyValue(k))||0;
-      if(v('--ex')>1.4)tone='light';else bare=v('--qo')<.05||hingeQ.getBoundingClientRect().top>=navh}}
+      if(v('--ex')>1.4)tone='light';else bare=!hingeQ||v('--qo')<.05||hingeQ.getBoundingClientRect().top>=navh}}
     if(FADE&&!RM){const s=finStage.getBoundingClientRect();if(s.top<=-.25*s.height&&s.bottom>navh)bare=finCta.getBoundingClientRect().top>=navh}
   }
   const n1=current==='home'&&h&&h.querySelector('h1'),quiet=!!n1&&(heroOver.classList.contains('keep')?heroType.getBoundingClientRect().bottom>0:FADE&&!RM?y<h.offsetHeight*.55:n1.getBoundingClientRect().bottom>0);
